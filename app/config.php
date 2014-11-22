@@ -1,0 +1,4 @@
+<?php
+/**
+ * ARCHIVO DE CONFIGURACIÓN DE LA APLICACIÓN
+ */
