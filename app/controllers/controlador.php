@@ -20,7 +20,8 @@ class controlador{
      * @return string
      */
     public function inicio(){
-        return '<p>Inicio</p>';
+        //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Inicio'));
     }
 
     public function listar(){
@@ -28,26 +29,30 @@ class controlador{
         $listaEnvios = $this->modelo->ListarEnvios();
 
         //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-        return CargarVista(BASE_DIR.'/views/cuerpo.php', array('listaEnvios'=>$listaEnvios));
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Listar envíos','listaEnvios'=>$listaEnvios));
+    }
+
+    public function crear(){
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Crear nuevo envío'));
     }
 
     public function editar()
     {
-        return '<p>Editar</p>';
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Editar envío'));
     }
 
     public function eliminar()
     {
-        return '<p>Eliminar</p>';
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Eliminar'));
     }
 
     public function anotar_recepcion()
     {
-        return '<p>Anotar recepción</p>';
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Anotar recepción'));
     }
 
     public function buscar()
     {
-        return '<p>Buscar</p>';
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Buscar envío'));
     }
 }

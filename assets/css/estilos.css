@@ -1,0 +1,146 @@
+*{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    vertical-align: baseline;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+
+#cabecera{
+    border-bottom:3px solid #eee;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+#sidebar{
+    margin-top: 80px;
+}
+
+#menu-navegacion{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.titulo-menu{
+    margin: 1em auto;
+}
+
+#menu-navegacion>ul{
+    list-style: none;
+}
+
+
+#menu-navegacion>a>span{
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+#menu-navegacion>li>span:hover {
+    visibility: visible;
+}
+
+.cuerpo{
+    min-height: 100%;
+    margin: 0 auto -50px;
+}
+
+.pie{
+    border-top:3px solid #eee;
+    min-height: 50px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+#titulo-pagina{
+    margin-top: 70px;
+}
+
+/* ESTILOS PARA LOS ENVÍOS */
+
+.envio{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1.5em;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.5);
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+
+}
+
+.lista-envios{
+    overflow: hidden;
+
+    /*width: 80%;*/
+
+}
+.envio-cabecera{
+    border-bottom: 3px solid #337ab7!important;
+}
+
+.envio-fecha{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.avatar{
+    height: 64px;
+    width: 64px;
+}
+
+.destinatario{
+    font-weight: lighter;
+}
+
+.datos{
+    margin-left: 1em;
+}
+
+.info-adicional>div>ul,li{
+    border: none;
+}
+
+.info-adicional>ul>li{
+    border:none;
+}
+
+.detalle{
+    border: 0px;
+}
+
+.texto-azul{
+    color: #337ab7!important;
+}
+
+.texto-gris{
+    color: #eee;
+}
+
+.texto-gris-oscuro{
+    color: #444444;
+}
+
+.texto-negro{
+    color: #080808;
+}
+
+.bg-verde {
+    background-color: #a0d468!important;
+}
+
+.bg-amarillo{
+    background-color: #f1c40f!important;
+}
+
+.bg-rojo{
+    background-color: #e74c3c!important;
+}
+
+.bg-gris{
+    background-color: #eee;
+}
+
+.bg-gris-claro{
+    color: #f5f5f5;
+}
