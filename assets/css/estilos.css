@@ -53,6 +53,10 @@
     background-color: #fff;
 }
 
+.contenedor-cuerpo{
+    margin-bottom: 70px;
+}
+
 #titulo-pagina{
     margin-top: 70px;
 }

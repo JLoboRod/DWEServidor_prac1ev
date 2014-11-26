@@ -12,7 +12,7 @@
 <body>
 
         <?=CargarVista(BASE_DIR.'/views/encabezado.php');?>
-        <div class="col-xs-12 col-xs-center">
+        <div class="col-xs-12 col-xs-center contenedor-cuerpo">
         <?=CargarVista(BASE_DIR.'/views/menu_navegacion.php');?>
         <?=$htmlCuerpo?>
         </div>
