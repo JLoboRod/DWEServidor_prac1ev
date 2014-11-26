@@ -34,7 +34,7 @@ function GeneraHTMLEnvio($datos)
 
         //Damos la vuelta a las fechas y cambiamos '-' por '/'
         $fecha_crea = join('/', array_reverse(explode('-',$datos['fecha_crea'])));
-        $fecha_ent = join('/', array_reverse(explode('-',$datos['fecha_crea'])));
+        $fecha_ent = join('/', array_reverse(explode('-',$datos['fecha_ent'])));
 
         //Comenzamos a generar el html
         $html .= '<div class="panel panel-default envio">' . SALTO_LINEA;
