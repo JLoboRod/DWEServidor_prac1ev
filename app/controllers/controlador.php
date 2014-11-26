@@ -3,16 +3,19 @@
  * CONTROLADOR
  */
 
-include_once BASE_DIR.'/models/modelo.php';
+include_once BASE_DIR . '/models/modelo_envios.php';
+include_once BASE_DIR . '/models/modelo_provincias.php';
 
 class controlador{
 
     //TODO: Filtrar la información que llega de los formularios
 
-    private $modelo;
+    private $modeloEnvios;
+    private $modeloProvincias;
 
     function __construct(){
-        $this->modelo = new Modelo();
+        $this->modeloEnvios = new ModeloEnvios();
+        $this->modeloProvincias = new ModeloProvincias();
     }
 
     /**
@@ -26,10 +29,22 @@ class controlador{
 
     public function listar(){
         //Llamamos al modelo para que nos entregue la lista de envíos
-        $listaEnvios = $this->modelo->ListarEnvios();
+        $listaEnvios = $this->modeloEnvios->ListarEnvios();
+        foreach($listaEnvios as $id => $envio)
+        {
+            $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
+
+            if ($provincia && count($provincia) === 1)
+            {
+                $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+            }
+        }
+
 
         //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'tituloPagina' => 'Listar envíos','listaEnvios'=>$listaEnvios));
+        return CargarVista(BASE_DIR.'/views/cuerpo.php', array( 'accion' => 'listar',
+            'tituloPagina' => 'Listar envíos',
+            'listaEnvios'=>$listaEnvios));
     }
 
     public function crear(){

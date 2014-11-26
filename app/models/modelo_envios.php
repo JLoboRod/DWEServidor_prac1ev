@@ -6,7 +6,7 @@
 // Incluimos el fichero de la capa de abstracción
 require_once BASE_DIR.'/models/db.php';
 
-class Modelo{
+class ModeloEnvios{
 
     private $db;  //Instancia de la capa de abstracción
 
@@ -22,7 +22,7 @@ class Modelo{
     public function &ListarEnvios()
     {
         $le = [];
-        $rs = $this->db->Consulta("select * from envios");
+        $rs = $this->db->Consulta("select * from envios order by fecha_crea desc");
         while($le[] = $this->db->LeeRegistro($rs));
         array_pop($le);
 
