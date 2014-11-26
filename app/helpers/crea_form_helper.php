@@ -8,10 +8,10 @@
  */
 function ValorPost($nombreCampo, $valorPorDefecto='')
 {
-	if (isset($_POST[$nombreCampo]))
-		return $_POST[$nombreCampo];
-	else
-		return $valorPorDefecto;
+    if (isset($_POST[$nombreCampo]))
+        return $_POST[$nombreCampo];
+    else
+        return $valorPorDefecto;
 }
 
 /**
@@ -36,10 +36,10 @@ function ValoresPost($nombreCampo, $valorPorDefecto=array())
  */
 function ValorGet($nombreCampo, $valorPorDefecto='')
 {
-	if (isset($_GET[$nombreCampo]))
-		return $_GET[$nombreCampo];
-	else
-		return $valorPorDefecto;
+    if (isset($_GET[$nombreCampo]))
+        return $_GET[$nombreCampo];
+    else
+        return $valorPorDefecto;
 }
 
 /**
@@ -51,20 +51,26 @@ function ValorGet($nombreCampo, $valorPorDefecto='')
  * @param string $valorDefecto Valor seleccionado
  * @return string
  */
-function CreaSelect($name, $opciones, $valorDefecto)
-{
-	$html="\n".'<select name="'.$name.'" style="margin: 0 10px;">';
-	foreach($opciones as $value=>$text)
-	{
-		if ($value==$valorDefecto)
-			$select='selected="selected"';
-		else
-			$select="";
-		$html.= "\n\t<option value=\"$value\" $select>$text</option>";
-	}
-	$html.="\n</select>";
 
-	return $html;
+function CreaSelect($name, $opciones, $valorDefecto=0)
+{
+    $html = '';
+
+    if(is_array($opciones)) {
+        $html  = "\n" . '<select class="form-control" id="' . $name . '" name="' . $name . '">' . SALTO_LINEA;
+        //Vamos a crear un option vacío para que no haya una provincia seleccionada inicialmente
+        $html .= '<option value="0" selected="selected"></option>'.SALTO_LINEA;
+
+        foreach ($opciones as $id => $provincia) {
+            if ($id == $valorDefecto)
+                $select = 'selected="selected"';
+            else
+                $select = "";
+            $html .= SALTO_LINEA.TAB.'<option value="'.($id+1).'" '.$select.'>'.$provincia['nombre'].'</option>';
+        }
+        $html .= "\n</select>";
+    }
+    return $html;
 }
 
 /**
@@ -76,18 +82,18 @@ function CreaSelect($name, $opciones, $valorDefecto)
  */
 function CreaRadioButton($name, $opciones, $valorDefecto)
 {
-	$html="\n";
-	for ($i = 0; $i < count($opciones); $i++) {
-		$html.='<input type="radio" name="'.$name.'" value="'.$opciones[$i].'"';
-		if ($opciones[$i]==$valorDefecto)
-		{
-			$html.=' checked="checked"';
-		}
-		$html.=' > '.$opciones[$i];
-	}
-	$html.="<br/><br/>";
+    $html="\n";
+    for ($i = 0; $i < count($opciones); $i++) {
+        $html.='<input type="radio" name="'.$name.'" value="'.$opciones[$i].'"';
+        if ($opciones[$i]==$valorDefecto)
+        {
+            $html.=' checked="checked"';
+        }
+        $html.=' > '.$opciones[$i];
+    }
+    $html.="<br/><br/>";
 
-	return $html;
+    return $html;
 }
 
 /**
@@ -99,48 +105,70 @@ function CreaRadioButton($name, $opciones, $valorDefecto)
  */
 function CreaCheckBox($name, $opciones, $valoresDefecto)
 {
-	$html="<br/>";
-	for ($i = 0; $i < count($opciones); $i++) {
-		$html.='<input type="checkbox" name="'.$name.'" value="'.$opciones[$i].'"';
+    $html="<br/>";
+    for ($i = 0; $i < count($opciones); $i++) {
+        $html.='<input type="checkbox" name="'.$name.'" value="'.$opciones[$i].'"';
 
-		if (in_array($opciones[$i], $valoresDefecto))
-		{
-			$html.=' checked="checked"';
-		}
-		$html.=' >'.$opciones[$i].'<br/>';
+        if (in_array($opciones[$i], $valoresDefecto))
+        {
+            $html.=' checked="checked"';
+        }
+        $html.=' >'.$opciones[$i].'<br/>';
 
-	}
-	$html.="<br/>";
+    }
+    $html.="<br/>";
 
-	return $html;
+    return $html;
 }
 
-function GetHTMLPregunta($pre)
+function CreaInputText($name, $valorPorDefecto)
 {
-	$html = '';
-
-	foreach($pre as $control){
-
-		$html.= $control['texto_pregunta'];
-
-		switch ($control['tipo']){
-			case 'radiobutton':
-				$html.= CreaRadioButton($control['campo'], $control['respuestas'], ValorPost($control['campo'], $control['respuestas'][0]));
-				break;
-			case 'checkbox':
-				$html.= CreaCheckBox($control['campo'].'[]', $control['respuestas'], ValoresPost($control['campo']));
-				break;
-			case 'select':
-				$html.= CreaSelect($control['campo'], $control['respuestas'], ValorPost($control['campo']));
-				break;
-			default:
-				$html="<p style='color: red;'>ERROR: No se pudo crear el formulario...</p>";
-				break;
-		}
-		//$html.=VerError($control['campo']); //En caso de filtrar/validar datos
-	}
-	$html.= '<input type="submit" value="Enviar">';
-
-	return $html;
+    $html  = '<br/>';
+    $html .= '<input type="text" class="form-control" name="'.$name.'" placeholder="Introduzca '.$name.'">';
+    $html .= '<br/>';
 }
+
+function CreaControlesFormulario($datos)
+{
+    $html = '';
+
+    foreach($datos as $control){
+
+        switch ($control['tipo']){
+            case 'text':
+                $html .= '<div class="form-group">';
+                $html .= '<label for="'.$control["campo"].'">'.$control["texto_pregunta"].'</label>'.SALTO_LINEA;
+                $html .= CreaInputText($control['campo'], ValorPost($control['campo']));
+                $html .= '</div>';
+                break;
+            case 'radiobutton':
+                $html .= '<div class="form-group">';
+                $html .= $control['texto_pregunta'];
+                $html .= CreaRadioButton($control['campo'], $control['respuestas'], ValorPost($control['campo'], $control['respuestas'][0]));
+                $html .= '</div>';
+                break;
+            case 'checkbox':
+                $html .= '<div class="form-group">';
+                $html .= $control['texto_pregunta'];
+                $html .= CreaCheckBox($control['campo'].'[]', $control['respuestas'], ValoresPost($control['campo']));
+                $html .= '</div>';
+                break;
+            case 'select':
+                $html .= '<div class="form-group">';
+                $html .= '<label for="'.$control["campo"].'">'.$control["texto_pregunta"].'</label>'.SALTO_LINEA;
+                $html .= CreaSelect($control["campo"], $control["respuestas"], ValorPost($control["campo"]));
+                $html .= '</div>';
+                break;
+            default:
+                $html='<p class="texto-rojo">ERROR: No se pudo crear el formulario...</p>';
+                break;
+        }
+
+        //$html.=VerError($control['campo']); //En caso de filtrar/validar datos
+    }
+    $html.= '<button type="submit" class="btn btn-default">Enviar</button>';
+
+    return $html;
+}
+
 

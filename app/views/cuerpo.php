@@ -4,6 +4,56 @@ define("SALTO_LINEA", "\n");
 define("TAB", "\t");
 
 /**
+ * Genera un formulario para la creación de un envío
+ */
+function GeneraHTMLFormCrear($listaProvincias)
+{
+
+    $html  = '<form role="form" action="?ctrl=controlador&accion=crear" method="post">'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="destinatario">Destinatario</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="destinatario" id="destinatario" value="'.ValorPost('destinatario').'" placeholder="Introduzca el destinatario">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="telefono">Teléfono</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="telefono" id="telefono" value="'.ValorPost('telefono').'" placeholder="Introduzca el teléfono de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="direccion">Dirección</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="direccion" id="direccion" value="'.ValorPost('direccion').'" placeholder="Introduzca la dirección de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="poblacion">Población</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="poblacion" id="poblacion" value="'.ValorPost('poblacion').'" placeholder="Introduzca el población">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="cod_postal">Código Postal</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="cod_postal" id="cod_postal" value="'.ValorPost('cod_postal').'" placeholder="Introduzca el teléfono de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="provincia">Provincia</label>'.SALTO_LINEA;
+    $html .=  CreaSelect('provincia', $listaProvincias, ValorPost('provincia'));
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="email">Email</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="email" id="email" value="'.ValorPost('email').'" placeholder="Introduzca dirección de correo electrónico">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="fecha_ent">Fecha de entrega</label>'.SALTO_LINEA;
+    $html .= '<input type="date" class="form-control" name="fecha_ent" id="fecha_ent" value="'.ValorPost('fecha_ent').'" placeholder="Introduzca la fecha de entrega dd/mm/aaaa">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="observaciones">Observaciones</label>'.SALTO_LINEA;
+    $html .= '<textarea class="form-control" name="observaciones" id="observaciones" value="'.ValorPost('observaciones').'" placeholder="¿Alguna observación?" rows="3"></textarea>'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+
+    $html .= '<button type="submit" class="btn btn-default">Enviar</button>'.SALTO_LINEA;
+    $html .= '</form>'.SALTO_LINEA;
+
+    return $html;
+}
+
+/**
  * Genera el código html de un envío con los datos
  * correspondientes pasados como parámetro
  * @param array $datos
@@ -146,6 +196,17 @@ function GeneraHTMLEnvio($datos)
                         }
                     } else {
                         echo 'No hay envíos registrados.'; //TODO: Dar estilos a este mensaje
+                    }
+                }
+                if($accion==='crear')
+                {
+                    if(isset($confirmacion))
+                    {
+                        echo '<p>'.$confirmacion.'</p>';
+                    }
+                    else if(isset($listaProvincias))
+                    {
+                        echo GeneraHTMLFormCrear($listaProvincias);
                     }
                 }
                 ?>
