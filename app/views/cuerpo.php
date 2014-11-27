@@ -324,6 +324,26 @@ function GeneraHTMLEnvio($datos)
                 echo GeneraHTMLFormSeleccionar($accion);
             }
         }
+        if($accion==='buscar')
+        {
+            if(isset($mensaje))
+            {
+                echo '<p>'.$mensaje.'</p>';
+            }
+            else
+            {
+                if(isset($listaEnvios))
+                {
+                    foreach ($listaEnvios as $clave => $valor) {
+                        echo GeneraHTMLEnvio($valor);
+                    }
+                }
+                else
+                {
+                    echo GeneraHTMLFormVacio($accion, $listaProvincias);
+                }
+            }
+        }
         ?>
 
     </div>

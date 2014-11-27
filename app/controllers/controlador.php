@@ -208,6 +208,10 @@ class controlador{
         }
     }
 
+    /**
+     * Función que trata el evento de anotar recepción de un envío
+     * @return string
+     */
     public function anotar_recepcion()
     {
         return CargarVista(BASE_DIR.'/views/cuerpo.php',
@@ -217,12 +221,65 @@ class controlador{
             ));
     }
 
+    /**
+     * Función que trata el evento de buscar envío
+     * @return string
+     */
     public function buscar()
     {
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
-            array(
-                'accion' => 'buscar',
-                'tituloPagina' => 'Buscar envío'
-            ));
+        if($_POST)
+        {
+            //Preparamos los criterios de búsqueda
+            $datos = [];
+
+            foreach($_POST as $clave => $valor)
+            {
+                if($valor) //Sólo tendremos en cuenta los campos que el usuario complete
+                {
+                    $datos[$clave] = $valor;
+                }
+            }
+
+            $listaEnvios = $this->modeloEnvios->BuscarEnvios($datos);
+
+            if($listaEnvios)
+            {
+                //Cambiamos cod_provincia por el nombre
+                foreach ($listaEnvios as $id => $envio) {
+                    $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
+
+                    if ($provincia && count($provincia) === 1) {
+                        $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+                    }
+                }
+
+                return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                    array(
+                        'accion' => 'buscar',
+                        'tituloPagina' => 'Buscar envíos',
+                        'listaEnvios' => $listaEnvios
+                    ));
+            }
+            else
+            {
+                return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                    array(
+                        'accion' => 'buscar',
+                        'tituloPagina' => 'Buscar envíos',
+                        'mensaje' => 'No hay envíos que cumplan esas condiciones.'
+                    ));
+            }
+        }
+        else //Mostramos formulario
+        {
+            $listaProvincias = $this->modeloProvincias->ListarProvincias();
+
+            return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                array(
+                    'accion' => 'buscar',
+                    'tituloPagina' => 'Buscar envíos',
+                    'listaProvincias' => $listaProvincias
+                ));
+        }
     }
 }
