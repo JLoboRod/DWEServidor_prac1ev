@@ -62,7 +62,7 @@ function CreaSelect($name, $opciones, $valorDefecto=0)
         $html .= '<option value="0" selected="selected"></option>'.SALTO_LINEA;
 
         foreach ($opciones as $id => $provincia) {
-            if ($id == $valorDefecto)
+            if (($id+1) == $valorDefecto)
                 $select = 'selected="selected"';
             else
                 $select = "";

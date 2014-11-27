@@ -38,11 +38,13 @@ class ModeloProvincias{
         if($condiciones){
             $sql = 'select * from provincias where';
             $cond='';
-            foreach($condiciones as $clave => $valor){
-                if($cond != '')
-                    $cond .= ' and ';
-                $cond.= $clave.' like "'.$valor.'"';
+            if(is_array($condiciones)) {
+                foreach ($condiciones as $clave => $valor) {
+                    if ($cond != '')
+                        $cond .= ' and ';
+                    $cond .= $clave . ' like "' . $valor . '"';
 
+                }
             }
             $sql.=' '.$cond;
         }

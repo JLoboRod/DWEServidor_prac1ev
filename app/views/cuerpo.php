@@ -54,6 +54,91 @@ function GeneraHTMLFormCrear($listaProvincias)
 }
 
 /**
+ * Genera un formulario de edición de un envío en concreto
+ * @param $listaProvincias
+ * @return string
+ */
+function GeneraHTMLFormEditar($datosEnvio, $listaProvincias)
+{
+
+    $html  = '<form role="form" action="?ctrl=controlador&accion=editar" method="post">'.SALTO_LINEA;
+
+    /*
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="cod_envio">Código de envío</label>'.SALTO_LINEA;
+    $html .= '<input type"text" class="form-control static" name="cod_envio" id="cod_envio" value="'.$datosEnvio["cod_envio"].'" disabled>'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    */
+
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="cod_envio">Código de envío</label>'.SALTO_LINEA;
+    $html .= '<input type"text" class="form-control static" name="cod_envio" id="cod_envio" value="'.$datosEnvio["cod_envio"].'" readonly>'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+
+
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="destinatario">Destinatario</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="destinatario" id="destinatario" value="'.$datosEnvio["destinatario"].'" placeholder="Introduzca el destinatario">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="telefono">Teléfono</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="telefono" id="telefono" value="'.$datosEnvio["telefono"].'" placeholder="Introduzca el teléfono de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="direccion">Dirección</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="direccion" id="direccion" value="'.$datosEnvio["direccion"].'" placeholder="Introduzca la dirección de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="poblacion">Población</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="poblacion" id="poblacion" value="'.$datosEnvio["poblacion"].'" placeholder="Introduzca el población">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="cod_postal">Código Postal</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="cod_postal" id="cod_postal" value="'.$datosEnvio["cod_postal"].'" placeholder="Introduzca el teléfono de contacto">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="provincia">Provincia</label>'.SALTO_LINEA;
+    $html .=  CreaSelect('provincia', $listaProvincias, $datosEnvio["provincia"]);
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="email">Email</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="email" id="email" value="'.$datosEnvio["email"].'" placeholder="Introduzca dirección de correo electrónico">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="fecha_ent">Fecha de entrega</label>'.SALTO_LINEA;
+    $html .= '<input type="date" class="form-control" name="fecha_ent" id="fecha_ent" value="'.$datosEnvio["fecha_ent"].'" placeholder="Introduzca la fecha de entrega dd/mm/aaaa">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="observaciones">Observaciones</label>'.SALTO_LINEA;
+    $html .= '<textarea class="form-control" name="observaciones" id="observaciones" placeholder="¿Alguna observación?" rows="3">'.$datosEnvio["observaciones"].'</textarea>'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+
+    $html .= '<button type="submit" class="btn btn-default">Enviar</button>'.SALTO_LINEA;
+    $html .= '</form>'.SALTO_LINEA;
+
+    return $html;
+}
+
+/**
+ * Genera un formulario de selección de envío
+ * @return string
+ */
+function GeneraHTMLFormSeleccionar()
+{
+    $html  = '<form role="form" action="?ctrl=controlador&accion=editar" method="post">'.SALTO_LINEA;
+
+    $html .= '<div class="form-group">'.SALTO_LINEA;
+    $html .= '<label for="cod_envio">Código de envío</label>'.SALTO_LINEA;
+    $html .= '<input type="text" class="form-control" name="cod_envio" id="cod_envio" value="'.ValorPost("cod_envio").'" placeholder="Introduzca el código de envío">'.SALTO_LINEA;
+    $html .= '</div>'.SALTO_LINEA;
+
+    $html .= '<button type="submit" class="btn btn-default">Enviar</button>'.SALTO_LINEA;
+    $html .= '</form>'.SALTO_LINEA;
+
+    return $html;
+}
+
+/**
  * Genera el código html de un envío con los datos
  * correspondientes pasados como parámetro
  * @param array $datos
@@ -207,6 +292,22 @@ function GeneraHTMLEnvio($datos)
                     else if(isset($listaProvincias))
                     {
                         echo GeneraHTMLFormCrear($listaProvincias);
+                    }
+                }
+                if($accion==='editar')
+                {
+
+                    if(isset($confirmacion))
+                    {
+                        echo '<p>'.$confirmacion.'</p>';
+                    }
+                    else if(isset($listaProvincias))
+                    {
+                        echo GeneraHTMLFormEditar($datosEnvio, $listaProvincias);
+                    }
+                    else
+                    {
+                        echo GeneraHTMLFormSeleccionar();
                     }
                 }
                 ?>

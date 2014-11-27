@@ -1,6 +1,6 @@
 <?php
 /**
- * MODELO
+ * MODELO PARA ENVÍOS
  */
 
 // Incluimos el fichero de la capa de abstracción
@@ -50,10 +50,11 @@ class ModeloEnvios{
         //Creamos la sentencia sql
         $sql = 'insert into envios '.$campos.' values '.$valores;
 
-        //DEBUG: Mostramos la sentencia sql
+        /*/DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
         echo "</pre>";
+        //*/
 
         $this->db->Consulta($sql);
     }
@@ -76,13 +77,13 @@ class ModeloEnvios{
         $updates = join(',', $updates);
 
         //Creamos la sentencia sql con ambas partes
-        $sql = 'update envios set '.$updates.' where cod_envios ='. $id;
+        $sql = 'update envios set '.$updates.' where cod_envio ='. $id;
 
-        //DEBUG: Mostramos la sentencia sql
+        /*/DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
         echo "</pre>";
-
+        //*/
         $this->db->Consulta($sql);
     }
 
@@ -91,13 +92,13 @@ class ModeloEnvios{
      * @param integer $id
      */
     public function EliminarEnvio($id){
-        $sql = 'delete from envios where cod_envios= '.$id;
+        $sql = 'delete from envios where cod_envio = '.$id;
 
-        //DEBUG: Mostramos la sentencia sql
+        /*/DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
         echo "</pre>";
-
+        //*/
         $this->db->Consulta($sql);
     }
 
@@ -110,22 +111,25 @@ class ModeloEnvios{
         if($condiciones){
             $sql = 'select * from envios where';
             $cond='';
-            foreach($condiciones as $clave => $valor){
-                if($cond != '')
-                    $cond .= ' and ';
-                $cond.= $clave.' like "'.$valor.'"';
 
+            if(is_array($condiciones)) {
+                foreach ($condiciones as $clave => $valor) {
+                    if ($cond != '')
+                        $cond .= ' and ';
+                    $cond .= $clave . ' like "' . $valor . '"';
+
+                }
             }
             $sql.=' '.$cond;
         }
         else{
             $sql = 'select * from envios';
         }
-        //DEBUG: Mostramos la sentencia sql
+        /*/DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
         echo "</pre>";
-
+        //*/
         $rs = $this->db->Consulta($sql);
         while($le[] = $this->db->LeeRegistro($rs));
         array_pop($le);

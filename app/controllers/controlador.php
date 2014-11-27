@@ -101,13 +101,67 @@ class controlador{
         }
     }
 
+    /**
+     * Función que trata el evento de editar envío
+     * @return string
+     */
     public function editar()
     {
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
-            array(
-                'accion' => 'editar',
-                'tituloPagina' => 'Editar envío'
-            ));
+
+        if($_POST)
+        {
+            /**
+             * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
+             */
+
+            if(count($_POST)===1 && isset($_POST['cod_envio'])) //Si SÓLO hemos especificado el cod_envio y si existe dicho envío...
+            {
+                $datosEnvio = $this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']));
+
+                $listaProvincias = $this->modeloProvincias->ListarProvincias();
+
+                //Mostramos el formulario de edición de envío
+                return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                    array(
+                        'accion' => 'editar',
+                        'tituloPagina' => 'Editar envío',
+                        'datosEnvio' => $datosEnvio[0],
+                        'listaProvincias' => $listaProvincias
+                    ));
+
+            }
+            else //Hemos especificado más datos -> venimos del formulario de edición
+            {
+                /**
+                 * FILTRADO --> TODO: Falta filtrar la información en editar. En principio suponemos que no hay problemas
+                 */
+
+                echo '<pre>';
+                print_r($_POST);
+                echo '</pre>';
+
+                $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
+                return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    array(
+                        'accion' => 'editar',
+                        'tituloPagina' => 'Editar envío',
+                        'confirmacion' => 'Envío modificado correctamente'
+                    ));
+
+
+            }
+
+        }
+        else {  //Mostramos el formulario de elección de pedido
+
+            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                array(
+                    'accion' => 'editar',
+                    'tituloPagina' => 'Editar envío'
+                ));
+
+        }
+
     }
 
     public function eliminar()
