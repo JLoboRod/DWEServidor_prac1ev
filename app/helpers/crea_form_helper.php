@@ -66,7 +66,10 @@ function CreaSelect($name, $opciones, $valorDefecto=0)
                 $select = 'selected="selected"';
             else
                 $select = "";
-            $html .= SALTO_LINEA.TAB.'<option value="'.($id+1).'" '.$select.'>'.$provincia['nombre'].'</option>';
+
+            //Hacemos lo siguiente ya que el cod_provincia es de tipo char(2)
+            $cod_prov = (($id+1)<10)? '0'.($id + 1) : $id + 1;
+            $html .= SALTO_LINEA.TAB.'<option value="'.$cod_prov.'" '.$select.'>'.$provincia['nombre'].'</option>';
         }
         $html .= "\n</select>";
     }
