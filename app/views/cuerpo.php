@@ -4,12 +4,12 @@ define("SALTO_LINEA", "\n");
 define("TAB", "\t");
 
 /**
- * Genera un formulario para la creación de un envío
+ * Genera un formulario sin datos
  */
-function GeneraHTMLFormCrear($listaProvincias)
+function GeneraHTMLFormVacio($accion, $listaProvincias)
 {
 
-    $html  = '<form role="form" action="?ctrl=controlador&accion=crear" method="post">'.SALTO_LINEA;
+    $html  = '<form role="form" action="?ctrl=controlador&accion='.$accion.'" method="post">'.SALTO_LINEA;
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="destinatario">Destinatario</label>'.SALTO_LINEA;
     $html .= '<input type="text" class="form-control" name="destinatario" id="destinatario" value="'.ValorPost('destinatario').'" placeholder="Introduzca el destinatario">'.SALTO_LINEA;
@@ -54,7 +54,7 @@ function GeneraHTMLFormCrear($listaProvincias)
 }
 
 /**
- * Genera un formulario de edición de un envío en concreto
+ * Genera un formulario de edición con los datos de un envío en concreto
  * @param $listaProvincias
  * @return string
  */
@@ -123,9 +123,9 @@ function GeneraHTMLFormEditar($datosEnvio, $listaProvincias)
  * Genera un formulario de selección de envío
  * @return string
  */
-function GeneraHTMLFormSeleccionar()
+function GeneraHTMLFormSeleccionar($accion)
 {
-    $html  = '<form role="form" action="?ctrl=controlador&accion=editar" method="post">'.SALTO_LINEA;
+    $html  = '<form role="form" action="?ctrl=controlador&accion='.$accion.'" method="post">'.SALTO_LINEA;
 
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="cod_envio">Código de envío</label>'.SALTO_LINEA;
@@ -268,51 +268,65 @@ function GeneraHTMLEnvio($datos)
 
 <div class="col-md-6 col-sm-12 col-xs-12">
 
-        <div class="col-md-12">
-            <div class="panel-group lista-envios" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="col-md-12">
+        <div class="panel-group lista-envios" id="accordion" role="tablist" aria-multiselectable="true">
 
-                <h2 class="page-header text-primary" id="titulo-pagina"><?=$tituloPagina?></div>
+            <h2 class="page-header text-primary" id="titulo-pagina"><?=$tituloPagina?></div>
 
-                <?php
-                if($tituloPagina==='Listar envíos') {
-                    if (isset($listaEnvios) && $listaEnvios) { //Si esta definida y no está vacía
-                        foreach ($listaEnvios as $clave => $valor) {
-                            echo GeneraHTMLEnvio($valor);
-                        }
-                    } else {
-                        echo 'No hay envíos registrados.'; //TODO: Dar estilos a este mensaje
-                    }
+        <?php
+        if($accion==='listar')
+        {
+            if(isset($mensaje))
+            {
+                echo '<p>'.$mensaje.'</p>';
+            }
+            else if (isset($listaEnvios) && $listaEnvios) { //Si esta definida y no está vacía
+                foreach ($listaEnvios as $clave => $valor) {
+                    echo GeneraHTMLEnvio($valor);
                 }
-                if($accion==='crear')
-                {
-                    if(isset($confirmacion))
-                    {
-                        echo '<p>'.$confirmacion.'</p>';
-                    }
-                    else if(isset($listaProvincias))
-                    {
-                        echo GeneraHTMLFormCrear($listaProvincias);
-                    }
-                }
-                if($accion==='editar')
-                {
+            }
+        }
+        if($accion==='crear')
+        {
+            if(isset($mensaje))
+            {
+                echo '<p>'.$mensaje.'</p>';
+            }
+            else if(isset($listaProvincias))
+            {
+                echo GeneraHTMLFormVacio($accion, $listaProvincias);
+            }
+        }
+        if($accion==='editar')
+        {
 
-                    if(isset($confirmacion))
-                    {
-                        echo '<p>'.$confirmacion.'</p>';
-                    }
-                    else if(isset($listaProvincias))
-                    {
-                        echo GeneraHTMLFormEditar($datosEnvio, $listaProvincias);
-                    }
-                    else
-                    {
-                        echo GeneraHTMLFormSeleccionar();
-                    }
-                }
-                ?>
+            if(isset($mensaje))
+            {
+                echo '<p>'.$mensaje.'</p>';
+            }
+            else if(isset($listaProvincias))
+            {
+                echo GeneraHTMLFormEditar($datosEnvio, $listaProvincias);
+            }
+            else
+            {
+                echo GeneraHTMLFormSeleccionar($accion);
+            }
+        }
+        if($accion==='eliminar')
+        {
+            if(isset($mensaje))
+            {
+                echo '<p>'.$mensaje.'</p>';
+            }
+            else
+            {
+                echo GeneraHTMLFormSeleccionar($accion);
+            }
+        }
+        ?>
 
-            </div>
-        </div>
+    </div>
+</div>
 
 </div>

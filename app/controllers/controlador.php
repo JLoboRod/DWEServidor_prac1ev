@@ -67,22 +67,20 @@ class controlador{
 
         if($_POST)
         {
-
             /**
              * FILTRADO --> TODO: Falta filtrar la informaciónen crear. En principio suponemos que no hay problemas
              */
 
-
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
+
             $this->modeloEnvios->CrearEnvio($_POST);
             return CargarVista(BASE_DIR . '/views/cuerpo.php',
                 array(
                     'accion' => 'crear',
                     'tituloPagina' => 'Crear nuevo envío',
-                    'confirmacion' => 'Envío creado correctamente'
+                    'mensaje' => 'Envío creado correctamente'
                 ));
-
         }
         else {
 
@@ -145,7 +143,7 @@ class controlador{
                     array(
                         'accion' => 'editar',
                         'tituloPagina' => 'Editar envío',
-                        'confirmacion' => 'Envío modificado correctamente'
+                        'mensaje' => 'Envío modificado correctamente'
                     ));
 
 
@@ -164,13 +162,50 @@ class controlador{
 
     }
 
+    /**
+     * Función que trata el evento de eliminar envío
+     * @return string
+     */
     public function eliminar()
     {
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
-            array(
-                'accion' => 'eliminar',
-                'tituloPagina' => 'Eliminar'
-            ));
+        if($_POST)
+        {
+
+            if(count($_POST)===1 && isset($_POST['cod_envio']))
+            {
+                /**
+                 * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
+                 */
+
+                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
+
+                    $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'eliminar',
+                            'tituloPagina' => 'Eliminar envío',
+                            'mensaje' => 'Envío eliminado correctamente.'
+                        ));
+                }
+                else
+                {
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'eliminar',
+                            'tituloPagina' => 'Eliminar envío',
+                            'mensaje' => 'Error al eliminar el envío.'
+                        ));
+                }
+            }
+        }
+        else
+        {
+            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                array(
+                    'accion' => 'eliminar',
+                    'tituloPagina' => 'Eliminar envío'
+                ));
+        }
     }
 
     public function anotar_recepcion()
