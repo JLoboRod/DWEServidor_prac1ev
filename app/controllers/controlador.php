@@ -35,34 +35,45 @@ class controlador{
      * Functión que trata el evento de listar envíos
      * @return string
      */
-    public function listar(){
+    public function listar()
+    {
         //Llamamos al modelo para que nos entregue la lista de envíos
         $listaEnvios = $this->modeloEnvios->ListarEnvios();
-        foreach($listaEnvios as $id => $envio)
-        {
-            $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
 
-            if ($provincia && count($provincia) === 1)
-            {
-                $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+        if($listaEnvios) {
+            foreach ($listaEnvios as $id => $envio) {
+                $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
+
+                if ($provincia && count($provincia) === 1) {
+                    $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+                }
             }
+
+            //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
+            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                array(
+                    'accion' => 'listar',
+                    'tituloPagina' => 'Listar envíos',
+                    'listaEnvios' => $listaEnvios
+                ));
         }
-
-
-        //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
-            array(
-                'accion' => 'listar',
-                'tituloPagina' => 'Listar envíos',
-                'listaEnvios'=>$listaEnvios
-            ));
+        else
+        {
+            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                array(
+                    'accion' => 'listar',
+                    'tituloPagina' => 'Listar envíos',
+                    'mensaje' => 'No hay envíos registrados.'
+                ));
+        }
     }
 
     /**
      * Función que trata el evento de crear envío
      * @return string
      */
-    public function crear(){
+    public function crear()
+    {
         $listaProvincias = $this->modeloProvincias->ListarProvincias();
 
         if($_POST)
@@ -114,18 +125,27 @@ class controlador{
             if(count($_POST)===1 && isset($_POST['cod_envio'])) //Si SÓLO hemos especificado el cod_envio y si existe dicho envío...
             {
                 $datosEnvio = $this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']));
+                if($datosEnvio) {
+                    $listaProvincias = $this->modeloProvincias->ListarProvincias();
 
-                $listaProvincias = $this->modeloProvincias->ListarProvincias();
-
-                //Mostramos el formulario de edición de envío
-                return CargarVista(BASE_DIR.'/views/cuerpo.php',
-                    array(
-                        'accion' => 'editar',
-                        'tituloPagina' => 'Editar envío',
-                        'datosEnvio' => $datosEnvio[0],
-                        'listaProvincias' => $listaProvincias
-                    ));
-
+                    //Mostramos el formulario de edición de envío
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'editar',
+                            'tituloPagina' => 'Editar envío',
+                            'datosEnvio' => $datosEnvio[0],
+                            'listaProvincias' => $listaProvincias
+                        ));
+                }
+                else
+                {
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'editar',
+                            'tituloPagina' => 'Editar envío',
+                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                        ));
+                }
             }
             else //Hemos especificado más datos -> venimos del formulario de edición
             {
@@ -133,16 +153,12 @@ class controlador{
                  * FILTRADO --> TODO: Falta filtrar la información en editar. En principio suponemos que no hay problemas
                  */
 
-                echo '<pre>';
-                print_r($_POST);
-                echo '</pre>';
-
                 $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
                 return CargarVista(BASE_DIR . '/views/cuerpo.php',
                     array(
                         'accion' => 'editar',
                         'tituloPagina' => 'Editar envío',
-                        'mensaje' => 'Envío modificado correctamente'
+                        'mensaje' => 'Envío modificado correctamente.'
                     ));
 
 
@@ -192,7 +208,7 @@ class controlador{
                         array(
                             'accion' => 'eliminar',
                             'tituloPagina' => 'Eliminar envío',
-                            'mensaje' => 'Error al eliminar el envío.'
+                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                         ));
                 }
             }
