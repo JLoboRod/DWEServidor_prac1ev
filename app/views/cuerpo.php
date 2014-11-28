@@ -38,10 +38,12 @@ function GeneraHTMLFormVacio($accion, $listaProvincias)
     $html .= '<label for="email">Email</label>'.SALTO_LINEA;
     $html .= '<input type="text" class="form-control" name="email" id="email" value="'.ValorPost('email').'" placeholder="Introduzca dirección de correo electrónico">'.SALTO_LINEA;
     $html .= '</div>'.SALTO_LINEA;
+    /*
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="fecha_ent">Fecha de entrega</label>'.SALTO_LINEA;
     $html .= '<input type="date" class="form-control" name="fecha_ent" id="fecha_ent" value="'.ValorPost('fecha_ent').'" placeholder="Introduzca la fecha de entrega dd/mm/aaaa">'.SALTO_LINEA;
     $html .= '</div>'.SALTO_LINEA;
+    */
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="observaciones">Observaciones</label>'.SALTO_LINEA;
     $html .= '<textarea class="form-control" name="observaciones" id="observaciones" value="'.ValorPost('observaciones').'" placeholder="¿Alguna observación?" rows="3"></textarea>'.SALTO_LINEA;
@@ -104,10 +106,12 @@ function GeneraHTMLFormEditar($datosEnvio, $listaProvincias)
     $html .= '<label for="email">Email</label>'.SALTO_LINEA;
     $html .= '<input type="text" class="form-control" name="email" id="email" value="'.$datosEnvio["email"].'" placeholder="Introduzca dirección de correo electrónico">'.SALTO_LINEA;
     $html .= '</div>'.SALTO_LINEA;
+    /*
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="fecha_ent">Fecha de entrega</label>'.SALTO_LINEA;
     $html .= '<input type="date" class="form-control" name="fecha_ent" id="fecha_ent" value="'.$datosEnvio["fecha_ent"].'" placeholder="Introduzca la fecha de entrega dd/mm/aaaa">'.SALTO_LINEA;
     $html .= '</div>'.SALTO_LINEA;
+    */
     $html .= '<div class="form-group">'.SALTO_LINEA;
     $html .= '<label for="observaciones">Observaciones</label>'.SALTO_LINEA;
     $html .= '<textarea class="form-control" name="observaciones" id="observaciones" placeholder="¿Alguna observación?" rows="3">'.$datosEnvio["observaciones"].'</textarea>'.SALTO_LINEA;
@@ -169,7 +173,7 @@ function GeneraHTMLEnvio($datos)
 
         //Damos la vuelta a las fechas y cambiamos '-' por '/'
         $fecha_crea = join('/', array_reverse(explode('-',$datos['fecha_crea'])));
-        $fecha_ent = join('/', array_reverse(explode('-',$datos['fecha_ent'])));
+        $fecha_ent = ($datos['fecha_ent']!=='0000-00-00')?join('/', array_reverse(explode('-',$datos['fecha_ent']))) : 'sin especificar';
 
         //Comenzamos a generar el html
         $html .= '<div class="panel panel-default envio">' . SALTO_LINEA;
@@ -221,7 +225,7 @@ function GeneraHTMLEnvio($datos)
         $html .= '<div class="panel-footer clearfix">' . SALTO_LINEA;
         $html .= '<div class="col-xs-12">' . SALTO_LINEA;
         $html .= '<small class="pull-left">Creado el <span class="envio-fecha">'.$fecha_crea.'</span></small>' . SALTO_LINEA;
-        $html .= '<small class="pull-right">A entregar el <span class="envio-fecha">'.$fecha_ent.'</span></small>' . SALTO_LINEA;
+        $html .= '<small class="pull-right">Entregado el <span class="envio-fecha">'.$fecha_ent.'</span></small>' . SALTO_LINEA;
         $html .= '</div>' . SALTO_LINEA;
         $html .= '</div>' . SALTO_LINEA;
         $html .= '</div>' . SALTO_LINEA;
@@ -324,7 +328,7 @@ function GeneraHTMLEnvio($datos)
                 echo GeneraHTMLFormSeleccionar($accion);
             }
         }
-        if($accion==='buscar')
+        if($accion==='anotar_recepcion')
         {
             if(isset($mensaje))
             {
@@ -332,14 +336,18 @@ function GeneraHTMLEnvio($datos)
             }
             else
             {
-                if(isset($listaEnvios))
-                {
+                echo GeneraHTMLFormSeleccionar($accion);
+            }
+        }
+        if($accion==='buscar') {
+            if (isset($mensaje)) {
+                echo '<p>' . $mensaje . '</p>';
+            } else {
+                if (isset($listaEnvios)) {
                     foreach ($listaEnvios as $clave => $valor) {
                         echo GeneraHTMLEnvio($valor);
                     }
-                }
-                else
-                {
+                } else {
                     echo GeneraHTMLFormVacio($accion, $listaProvincias);
                 }
             }

@@ -73,7 +73,6 @@ class controlador{
 
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
-
             $this->modeloEnvios->CrearEnvio($_POST);
             return CargarVista(BASE_DIR . '/views/cuerpo.php',
                 array(
@@ -214,11 +213,48 @@ class controlador{
      */
     public function anotar_recepcion()
     {
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
-            array(
-                'accion' => 'anotar_recepcion',
-                'tituloPagina' => 'Anotar recepción'
-            ));
+        if($_POST)
+        {
+
+            if(count($_POST)===1 && isset($_POST['cod_envio']))
+            {
+                /**
+                 * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
+                 */
+
+                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
+
+                    $this->modeloEnvios->EditarEnvio($_POST['cod_envio'],
+                        array('estado' => 'E',
+                              'fecha_ent' => date('Y-m-d')
+                        ));
+
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'anotar_recepcion',
+                            'tituloPagina' => 'Anotar recepción de envío',
+                            'mensaje' => 'Recepción anotada correctamente.'
+                        ));
+                }
+                else
+                {
+                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                        array(
+                            'accion' => 'anotar_recepcion',
+                            'tituloPagina' => 'Anotar recepción de envío',
+                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                        ));
+                }
+            }
+        }
+        else
+        {
+            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                array(
+                    'accion' => 'anotar_recepcion',
+                    'tituloPagina' => 'Anotar recepción de envío'
+                ));
+        }
     }
 
     /**
