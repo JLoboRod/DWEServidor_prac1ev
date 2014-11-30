@@ -19,16 +19,40 @@ class controlador{
     }
 
     /**
+     * Funcion de prueba de vistas
+     */
+    public function prueba()
+    {
+        $titulo = CargarVista(BASE_DIR.'/views/titulo.php', 
+            array(
+                'tituloPagina' => 'Esto funciona'
+                ));
+
+        $mensaje = CargarVista(BASE_DIR.'/views/mensaje.php',
+            array(
+                'mensaje' => 'Esto es un mensaje de prueba'
+                ));
+        
+        $debug = CargarVista(BASE_DIR.'/views/debug.php',
+            array(
+                'debug' => $this->modeloProvincias->ListarProvinciasIdxCodigo()
+                ));
+
+        return $titulo.$mensaje.$debug;
+    }
+
+    /**
      * Función inicio que se ejecuta por defecto
      * @return string
      */
     public function inicio(){
         //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-        return CargarVista(BASE_DIR.'/views/cuerpo.php',
+        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
             array(
-                'accion' => 'inicio',
                 'tituloPagina' => 'Inicio'
             ));
+
+        return $titulo;
     }
 
     /**
@@ -37,34 +61,64 @@ class controlador{
      */
     public function listar()
     {
-        //Llamamos al modelo para que nos entregue la lista de envíos
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+                array(
+                    'tituloPagina' => 'Listar envíos'
+                    ));
+
         $listaEnvios = $this->modeloEnvios->ListarEnvios();
+        
+        if($listaEnvios)
+        {
+            $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+            foreach ($listaEnvios as $id => $envio) 
+            {
+                $listaEnvios[$id]['provincia'] = $listaProvincias[$listaEnvios[$id]['provincia']];
+            
 
-        if($listaEnvios) {
-            foreach ($listaEnvios as $id => $envio) {
-                $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
-
-                if ($provincia && count($provincia) === 1) {
-                    $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+                if($envio) 
+                {
+            
+                    switch(strtoupper($envio['estado']))
+                    {
+                        case 'P':
+                            $listaEnvios[$id]['estado'] = 'Pendiente';
+                            $listaEnvios[$id]['estadoLabel']  = 'label-primary';
+                            break;
+                        case 'E':
+                            $listaEnvios[$id]['estado'] = 'Entregado';
+                            $listaEnvios[$id]['estadoLabel']  = 'label-success';
+                            break;
+                        case 'D':
+                            $listaEnvios[$id]['estado'] = 'Devuelto';
+                            $listaEnvios[$id]['estadoLabel'] = 'label-danger';
+                            break;
+                    }
                 }
+           
+
+                //Damos la vuelta a las fechas y cambiamos '-' por '/'
+                $listaEnvios[$id]['fecha_crea'] = join('/', array_reverse(explode('-',$listaEnvios[$id]['fecha_crea'])));
+                $listaEnvios[$id]['fecha_ent'] = ($listaEnvios[$id]['fecha_ent']!==NULL)?join('/', array_reverse(explode('-',$listaEnvios[$id]['fecha_ent']))) : 'sin especificar';
+
             }
 
-            //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $listar = CargarVista(BASE_DIR . '/views/listar.php',
                 array(
-                    'accion' => 'listar',
-                    'tituloPagina' => 'Listar envíos',
                     'listaEnvios' => $listaEnvios
-                ));
+                    ));
+
+            return $titulo.$listar; 
+       
         }
         else
         {
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                 array(
-                    'accion' => 'listar',
-                    'tituloPagina' => 'Listar envíos',
                     'mensaje' => 'No hay envíos registrados.'
-                ));
+                    ));
+
+            return $titulo.$mensaje;
         }
     }
 
@@ -74,7 +128,10 @@ class controlador{
      */
     public function crear()
     {
-        $listaProvincias = $this->modeloProvincias->ListarProvincias();
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+            array(
+                'tituloPagina' => 'Crear nuevo envío'
+            ));
 
         if($_POST)
         {
@@ -84,29 +141,27 @@ class controlador{
 
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
-            $this->modeloEnvios->CrearEnvio($_POST);
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $consulta = $this->modeloEnvios->CrearEnvio($_POST);
+            $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                 array(
-                    'accion' => 'crear',
-                    'tituloPagina' => 'Crear nuevo envío',
                     'mensaje' => 'Envío creado correctamente'
+                ));
+            $debug = CargarVista(BASE_DIR . '/views/debug.php',
+                array(
+                    'debug' => $consulta
                 ));
         }
         else {
+            $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
 
-            $provincias = [];
-
-            foreach ($listaProvincias as $id => $provincia) {
-                $provincias[] = $provincia['nombre'];
-            }
-
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
                 array(
-                    'accion' => 'crear',
-                    'tituloPagina' => 'Crear nuevo envío',
-                    'listaProvincias' => $listaProvincias
+                    'accion' => '?ctrl=controlador&accion=crear',
+                    'listaProvincias' => $provincias
                 ));
         }
+
+        return (isset($mensaje))? $titulo.$mensaje.$debug : $titulo.$formulario;
     }
 
     /**
@@ -115,8 +170,12 @@ class controlador{
      */
     public function editar()
     {
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+            array(
+                'tituloPagina' => 'Editar envío'
+                ));
 
-        if($_POST)
+        if($_POST) //Venimos de algún formulario
         {
             /**
              * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
@@ -125,26 +184,28 @@ class controlador{
             if(count($_POST)===1 && isset($_POST['cod_envio'])) //Si SÓLO hemos especificado el cod_envio y si existe dicho envío...
             {
                 $datosEnvio = $this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']));
-                if($datosEnvio) {
-                    $listaProvincias = $this->modeloProvincias->ListarProvincias();
+
+                if($datosEnvio) //Si existe el envío especificado
+                {
+                    $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
 
                     //Mostramos el formulario de edición de envío
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_envio.php',
                         array(
-                            'accion' => 'editar',
-                            'tituloPagina' => 'Editar envío',
+                            'accion' => '?ctrl=controlador&accion=editar',
                             'datosEnvio' => $datosEnvio[0],
-                            'listaProvincias' => $listaProvincias
+                            'listaProvincias' => $provincias
                         ));
+                    return $titulo.$formulario;
                 }
                 else
                 {
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                         array(
-                            'accion' => 'editar',
-                            'tituloPagina' => 'Editar envío',
                             'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                         ));
+
+                    return $titulo.$mensaje;
                 }
             }
             else //Hemos especificado más datos -> venimos del formulario de edición
@@ -154,25 +215,24 @@ class controlador{
                  */
 
                 $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
-                return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                     array(
-                        'accion' => 'editar',
-                        'tituloPagina' => 'Editar envío',
                         'mensaje' => 'Envío modificado correctamente.'
                     ));
 
-
+                return $titulo.$mensaje;
             }
 
         }
         else {  //Mostramos el formulario de elección de pedido
 
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => 'editar',
-                    'tituloPagina' => 'Editar envío'
+                    'accion' => '?ctrl=controlador&accion=editar'
+
                 ));
 
+            return $titulo.$formulario;
         }
 
     }
@@ -183,6 +243,11 @@ class controlador{
      */
     public function eliminar()
     {
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+            array(
+                'tituloPagina' => 'Eliminar envío'
+            ));
+
         if($_POST)
         {
 
@@ -195,31 +260,29 @@ class controlador{
                 if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
 
                     $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                         array(
-                            'accion' => 'eliminar',
-                            'tituloPagina' => 'Eliminar envío',
                             'mensaje' => 'Envío eliminado correctamente.'
                         ));
                 }
                 else
                 {
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                         array(
-                            'accion' => 'eliminar',
-                            'tituloPagina' => 'Eliminar envío',
                             'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                         ));
                 }
+                return $titulo.$mensaje;
             }
         }
         else
         {
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => 'eliminar',
-                    'tituloPagina' => 'Eliminar envío'
+                    'accion' => '?ctrl=controlador&accion=eliminar'
                 ));
+
+            return $titulo.$formulario;
         }
     }
 
@@ -229,47 +292,48 @@ class controlador{
      */
     public function anotar_recepcion()
     {
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+            array(
+                'tituloPagina' => 'Eliminar envío'
+            ));
+
         if($_POST)
         {
-
             if(count($_POST)===1 && isset($_POST['cod_envio']))
             {
                 /**
                  * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
                  */
 
-                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
-
+                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) { //Si existe el envío especificado
+                    //Cambiamos el estado del envío a Entregado y anotamos la fecha de entrega
                     $this->modeloEnvios->EditarEnvio($_POST['cod_envio'],
                         array('estado' => 'E',
                               'fecha_ent' => date('Y-m-d')
                         ));
 
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                         array(
-                            'accion' => 'anotar_recepcion',
-                            'tituloPagina' => 'Anotar recepción de envío',
                             'mensaje' => 'Recepción anotada correctamente.'
                         ));
                 }
                 else
                 {
-                    return CargarVista(BASE_DIR . '/views/cuerpo.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
                         array(
-                            'accion' => 'anotar_recepcion',
-                            'tituloPagina' => 'Anotar recepción de envío',
                             'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                         ));
                 }
             }
+            return $titulo.$mensaje;
         }
         else
         {
-            return CargarVista(BASE_DIR . '/views/cuerpo.php',
+            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => 'anotar_recepcion',
-                    'tituloPagina' => 'Anotar recepción de envío'
+                    'accion' => '?ctrl=controlador&accion=anotar_recepcion'
                 ));
+            return $titulo.$formulario;
         }
     }
 
@@ -279,6 +343,11 @@ class controlador{
      */
     public function buscar()
     {
+        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+            array(
+                'tituloPagina' => 'Buscar envíos'
+            ));
+
         if($_POST)
         {
             //Preparamos los criterios de búsqueda
@@ -298,40 +367,40 @@ class controlador{
             {
                 //Cambiamos cod_provincia por el nombre
                 foreach ($listaEnvios as $id => $envio) {
-                    $provincia = $this->modeloProvincias->BuscarProvincias(array('cod_provincia' => $envio['provincia']));
+                    $provincia = $this->modeloProvincias->BuscarProvinciasIdxCodigo(array('cod_provincia' => $envio['provincia']));
 
-                    if ($provincia && count($provincia) === 1) {
-                        $listaEnvios[$id]['provincia'] = $provincia[0]['nombre'];
+                    if ($provincia && count($provincia) === 1)
+                    {
+                        $listaEnvios[$id]['provincia'] = $provincia[$listaEnvios[$id]['provincia']];
                     }
                 }
 
-                return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                $listar = CargarVista(BASE_DIR . '/views/listar.php',
                     array(
-                        'accion' => 'buscar',
-                        'tituloPagina' => 'Buscar envíos',
                         'listaEnvios' => $listaEnvios
                     ));
+
+                return $titulo.$listar;
             }
             else
             {
-                return CargarVista(BASE_DIR.'/views/cuerpo.php',
+                $mensaje = CargarVista(BASE_DIR.'/views/mensaje.php',
                     array(
-                        'accion' => 'buscar',
-                        'tituloPagina' => 'Buscar envíos',
                         'mensaje' => 'No hay envíos que cumplan esas condiciones.'
                     ));
+                return $titulo.$mensaje;
             }
         }
         else //Mostramos formulario
         {
-            $listaProvincias = $this->modeloProvincias->ListarProvincias();
+            $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
 
-            return CargarVista(BASE_DIR.'/views/cuerpo.php',
+            $formulario = CargarVista(BASE_DIR.'/views/formulario_crea_envio.php',
                 array(
-                    'accion' => 'buscar',
-                    'tituloPagina' => 'Buscar envíos',
+                    'accion' => '?ctrl=controlador&accion=buscar',
                     'listaProvincias' => $listaProvincias
                 ));
+            return $titulo.$formulario;
         }
     }
 }

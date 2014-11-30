@@ -13,20 +13,22 @@
 
         <?=CargarVista(BASE_DIR.'/views/encabezado.php');?>
         <div class="col-xs-12 col-xs-center contenedor-cuerpo">
-        <?=CargarVista(BASE_DIR.'/views/menu_navegacion.php');?>
-        <?=$htmlCuerpo?>
+            <?=CargarVista(BASE_DIR.'/views/menu_navegacion.php');?>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="col-md-12">
+                    <div class="panel-group lista-envios" id="accordion" role="tablist" aria-multiselectable="true">
+                        <?=$htmlCuerpo?>
+                    </div>
+                </div>
+            </div>
         </div>
         <?=CargarVista(BASE_DIR.'/views/pie.php'); ?>
+        
+
+
         <!-- Los scripts aquí para acelerar la carga de la página -->
         <script src="http://localhost/DWEServidor_prac1ev/assets/js/jquery-2.1.1.js"></script>
         <script src="http://localhost/DWEServidor_prac1ev/assets/js/bootstrap.min.js"></script>
-        <script>
-            $(function () {
-                $('#menu-navegacion li').click(function () {
-                    $(this).addClass('active').siblings().removeClass('active');
-                });
-            });
-        </script>
 </body>
 </html>
 <!--

@@ -57,19 +57,18 @@ function CreaSelect($name, $opciones, $valorDefecto=0)
     $html = '';
 
     if(is_array($opciones)) {
-        $html  = "\n" . '<select class="form-control" id="' . $name . '" name="' . $name . '">' . SALTO_LINEA;
+        $html  = "\n" . '<select class="form-control" id="' . $name . '" name="' . $name . '">' ."\n";
         //Vamos a crear un option vacío para que no haya una provincia seleccionada inicialmente
-        $html .= '<option value="0" selected="selected"></option>'.SALTO_LINEA;
+        $html .= '<option value="00" selected="selected"></option>'. "\n";
 
         foreach ($opciones as $id => $provincia) {
-            if (($id+1) == $valorDefecto)
+            if (($id) == $valorDefecto)
                 $select = 'selected="selected"';
             else
                 $select = "";
 
             //Hacemos lo siguiente ya que el cod_provincia es de tipo char(2)
-            $cod_prov = (($id+1)<10)? '0'.($id + 1) : $id + 1;
-            $html .= SALTO_LINEA.TAB.'<option value="'.$cod_prov.'" '.$select.'>'.$provincia['nombre'].'</option>';
+            $html .= "\n\t".'<option value="'.$id.'" '.$select.'>'.$provincia.'</option>';
         }
         $html .= "\n</select>";
     }
