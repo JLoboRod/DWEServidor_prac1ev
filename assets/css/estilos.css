@@ -5,6 +5,10 @@
     white-space: nowrap;
 }
 
+.paginador{
+    margin:0 auto;
+    margin-bottom: 1em;
+}
 
 #cabecera{
     border-bottom:3px solid #eee;
@@ -74,7 +78,7 @@
 }
 
 .lista-envios{
-    overflow: hidden;
+    overflow: scroll;
 
     /*width: 80%;*/
 

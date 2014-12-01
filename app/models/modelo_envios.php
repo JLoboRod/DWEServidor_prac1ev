@@ -16,13 +16,52 @@ class ModeloEnvios{
     }
 
     /**
+     * Devuelve el número de envíos que cumplen $condiciones
+     * @return integer
+     */
+    public function NumEnvios($condiciones=NULL)
+    {
+        if($condiciones){
+            $sql = 'select count(*) as total from envios where';
+            $cond='';
+
+            if(is_array($condiciones)) {
+                foreach ($condiciones as $clave => $valor) {
+                    if ($cond != '')
+                        $cond .= ' and ';
+                    $cond .= $clave . ' like "' . $valor . '"';
+
+                }
+            }
+            $sql.=' '.$cond;
+        }
+        else{
+            $sql = 'select count(*) as total from envios';
+        }
+        $rs = $this->db->Consulta($sql);
+
+        return $this->db->LeeRegistro($rs)['total'];
+
+    }
+
+    /**
      * Devuelve la lista de envíos
      * @return array
      */
-    public function &ListarEnvios()
+    public function &ListarEnvios($inic='', $porPag='')
     {
         $le = [];
-        $rs = $this->db->Consulta("select * from envios order by fecha_crea desc");
+        if($inic!=='' && $porPag!=='')
+        {
+            //$rs = $this->db->Consulta("select * from envios order by fecha_crea desc limit ".$inic.",".$porPag);
+            $rs = $this->db->Consulta("select * from envios limit ".$inic.",".$porPag);
+        }
+        else
+        {
+            //$rs = $this->db->Consulta("select * from envios order by fecha_crea desc");
+            $rs = $this->db->Consulta("select * from envios");
+
+        }
         while($le[] = $this->db->LeeRegistro($rs));
         array_pop($le);
 

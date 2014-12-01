@@ -66,19 +66,53 @@ class controlador{
                     'tituloPagina' => 'Listar envíos'
                     ));
 
-        $listaEnvios = $this->modeloEnvios->ListarEnvios();
-        
-        if($listaEnvios)
+
+        ############ PAGINACIÓN ############
+
+        if(isset($_GET['pagina']))
         {
+            $paginaActual = $_GET['pagina'];
+        }
+        else
+        {
+            $paginaActual = 1;
+        }
+
+        $total = $this->modeloEnvios->NumEnvios();
+        $resultadosPorPagina = 3;
+        $numeroPaginas = ceil($total/$resultadosPorPagina);
+        $inicio = ($paginaActual-1) * $resultadosPorPagina;
+
+        if($total>0 && $paginaActual>0 && $paginaActual<=$numeroPaginas)
+        {
+            //Cargamos el paginador con los datos adecuados
+             $paginador = CargarVista(BASE_DIR . '/views/paginador.php',
+                array(
+                    'href' => '?ctrl=controlador&accion=listar&pagina=',
+                    'paginaActual' => $paginaActual,
+                    'numeroPaginas' => $numeroPaginas
+                ));
+            $resto = $total%$resultadosPorPagina;
+
+            if($resto!==0 && $paginaActual === $numeroPaginas) //Si estamos en la última página y no hay exactamente $resultadosPorPagina resultados
+            {
+                $listaEnvios = $this->modeloEnvios->ListarEnvios($inicio, $resto); //Hasta el último debería ser
+            }
+            else
+            {
+                $listaEnvios = $this->modeloEnvios->ListarEnvios($inicio, $resultadosPorPagina);
+            }
+            ####################################
+
             $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
-            foreach ($listaEnvios as $id => $envio) 
+            foreach ($listaEnvios as $id => $envio)
             {
                 $listaEnvios[$id]['provincia'] = $listaProvincias[$listaEnvios[$id]['provincia']];
-            
 
-                if($envio) 
+
+                if($envio)
                 {
-            
+
                     switch(strtoupper($envio['estado']))
                     {
                         case 'P':
@@ -95,7 +129,7 @@ class controlador{
                             break;
                     }
                 }
-           
+
 
                 //Damos la vuelta a las fechas y cambiamos '-' por '/'
                 $listaEnvios[$id]['fecha_crea'] = join('/', array_reverse(explode('-',$listaEnvios[$id]['fecha_crea'])));
@@ -108,7 +142,8 @@ class controlador{
                     'listaEnvios' => $listaEnvios
                     ));
 
-            return $titulo.$listar; 
+            return $titulo.$paginador.$listar;
+
        
         }
         else
@@ -120,6 +155,7 @@ class controlador{
 
             return $titulo.$mensaje;
         }
+        //*/
     }
 
     /**
@@ -146,10 +182,6 @@ class controlador{
                 array(
                     'mensaje' => 'Envío creado correctamente'
                 ));
-            $debug = CargarVista(BASE_DIR . '/views/debug.php',
-                array(
-                    'debug' => $consulta
-                ));
         }
         else {
             $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
@@ -161,7 +193,7 @@ class controlador{
                 ));
         }
 
-        return (isset($mensaje))? $titulo.$mensaje.$debug : $titulo.$formulario;
+        return (isset($mensaje))? $titulo.$mensaje: $titulo.$formulario;
     }
 
     /**
@@ -365,14 +397,37 @@ class controlador{
 
             if($listaEnvios)
             {
-                //Cambiamos cod_provincia por el nombre
-                foreach ($listaEnvios as $id => $envio) {
-                    $provincia = $this->modeloProvincias->BuscarProvinciasIdxCodigo(array('cod_provincia' => $envio['provincia']));
+                $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+                foreach ($listaEnvios as $id => $envio)
+                {
+                    $listaEnvios[$id]['provincia'] = $listaProvincias[$listaEnvios[$id]['provincia']];
 
-                    if ($provincia && count($provincia) === 1)
+
+                    if($envio)
                     {
-                        $listaEnvios[$id]['provincia'] = $provincia[$listaEnvios[$id]['provincia']];
+
+                        switch(strtoupper($envio['estado']))
+                        {
+                            case 'P':
+                                $listaEnvios[$id]['estado'] = 'Pendiente';
+                                $listaEnvios[$id]['estadoLabel']  = 'label-primary';
+                                break;
+                            case 'E':
+                                $listaEnvios[$id]['estado'] = 'Entregado';
+                                $listaEnvios[$id]['estadoLabel']  = 'label-success';
+                                break;
+                            case 'D':
+                                $listaEnvios[$id]['estado'] = 'Devuelto';
+                                $listaEnvios[$id]['estadoLabel'] = 'label-danger';
+                                break;
+                        }
                     }
+
+
+                    //Damos la vuelta a las fechas y cambiamos '-' por '/'
+                    $listaEnvios[$id]['fecha_crea'] = join('/', array_reverse(explode('-',$listaEnvios[$id]['fecha_crea'])));
+                    $listaEnvios[$id]['fecha_ent'] = ($listaEnvios[$id]['fecha_ent']!==NULL)?join('/', array_reverse(explode('-',$listaEnvios[$id]['fecha_ent']))) : 'sin especificar';
+
                 }
 
                 $listar = CargarVista(BASE_DIR . '/views/listar.php',

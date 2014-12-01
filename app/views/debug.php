@@ -1,3 +1,5 @@
 <pre>
-	<?=print_r($debug)?>
+<?php
+print_r($debug);
+?>
 </pre>
