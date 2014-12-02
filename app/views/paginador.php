@@ -1,20 +1,25 @@
 <ul class="pagination paginador">
-    <?php
-    echo ($paginaActual == 1)? '<li class="disabled">' : '<li>';
-    echo '<a href="'.$href;
-    echo ($paginaActual == 1)? $paginaActual:($paginaActual-1);
-    echo '">&laquo;</a></li>';
-    for($i = 1; $i <= $numeroPaginas; $i++)
-    {
-        echo '<li';
-        if($i == $paginaActual)
-            echo ' class="active"';
-        echo '><a href="'.$href.$i.'">'.$i.'</a></li>';
-    }
-
-    echo ($paginaActual == $numeroPaginas)? '<li class="disabled">' : '<li>';
-    echo '<a href="'.$href;
-    echo ($paginaActual == $numeroPaginas)?$paginaActual:($paginaActual+1);
-    echo '">&raquo;</a></li>';
-    ?>
+    <?php if ($paginaActual == 1) : ?>
+        <li class="disabled">
+            <a href="<?=$href.$paginaActual?>">&laquo;</a>
+        </li>
+    <?php else : ?>
+        <li>
+            <a href="<?=$href.($paginaActual-1)?>">&laquo;</a>
+        </li>
+    <?php endif;?>
+    <?php for($i = 1; $i<=$numeroPaginas; $i++) : ?>
+        <li <?=($i == $paginaActual) ? 'class="active"' : '' ?>>
+            <a href="<?=$href.$i?>"><?=$i?></a>
+        </li>
+    <?php endfor; ?>
+    <?php if ($paginaActual == $numeroPaginas) : ?>
+        <li class="disabled">
+            <a href="<?=$href.$paginaActual?>">&raquo;</a>
+        </li>
+    <?php else : ?>
+        <li>
+            <a href="<?=$href.($paginaActual+1)?>">&raquo;</a>
+        </li>
+    <?php endif;?>
 </ul>
