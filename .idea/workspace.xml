@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/modelo_envios.php" afterPath="$PROJECT_DIR$/app/models/modelo_envios.php" />
+    <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="Añadida documentación generada con ApiGen.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/collapsed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/footer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/inherit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/resize.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/sort.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/tree-cleaner.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/tree-hasnext.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/tree-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/tree-vertical.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/404.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-Db.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-ModeloEnvios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-ModeloProvincias.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-controlador.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/combined.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/elementlist.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-Db.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-ModeloEnvios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-ModeloProvincias.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-controlador.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/resources/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/todo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/tree.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DWEServidor_prac1ev.iws" />
@@ -28,34 +51,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="paginador.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="paginador.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/paginador.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="465">
-              <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.6666667" vertical-offset="0" max-vertical-offset="465">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modelo_envios.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5208845" vertical-offset="2308" max-vertical-offset="2745">
-              <caret line="170" column="22" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="22" />
-              <folding>
-                <marker date="1417881665000" expanded="true" signature="486:528" placeholder="select count..envios..." />
-                <marker date="1417881665000" expanded="true" signature="905:941" placeholder="select count..envios..." />
-                <marker date="1417881665000" expanded="true" signature="1297:1359" placeholder="select * fro..envios..." />
-                <marker date="1417881665000" expanded="true" signature="1412:1449" placeholder="select * fro..envios..." />
-                <marker date="1417881665000" expanded="true" signature="1533:1578" placeholder="select * fro..envios..." />
-                <marker date="1417881665000" expanded="true" signature="1623:1643" placeholder="select * fro..envios..." />
-                <marker date="1417881665000" expanded="true" signature="2359:2397" placeholder="insert into ..." />
-                <marker date="1417881665000" expanded="true" signature="3035:3083" placeholder="update envio..." />
-                <marker date="1417881665000" expanded="true" signature="3386:3423" placeholder="delete from ..." />
-                <marker date="1417881665000" expanded="true" signature="3805:3831" placeholder="select * fro..envios..." />
-                <marker date="1417881665000" expanded="true" signature="4208:4228" placeholder="select * fro..envios..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -140,6 +141,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -170,6 +185,26 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -180,14 +215,22 @@
       <option name="number" value="Default" />
       <updated>1417536452878</updated>
     </task>
+    <task id="LOCAL-00001" summary="Cambios en el modelo de envíos: Ahora los resultados de búsqueda se presentan ordenados por fecha de creación.">
+      <created>1417881747861</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1417881747861</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991204" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -222,6 +265,9 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Cambios en el modelo de envíos: Ahora los resultados de búsqueda se presentan ordenados por fecha de creación." />
+    <MESSAGE value="Añadida documentación generada con ApiGen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadida documentación generada con ApiGen." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -243,31 +289,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/paginador.php">
+    <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="465">
-          <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
-          <folding />
+        <state vertical-scroll-proportion="0.5234568" vertical-offset="2308" max-vertical-offset="2745">
+          <caret line="170" column="22" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="22" />
+          <folding>
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="update envio..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417881665000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
+    <entry file="file://$PROJECT_DIR$/app/views/paginador.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5208845" vertical-offset="2308" max-vertical-offset="2745">
-          <caret line="170" column="22" selection-start-line="170" selection-start-column="22" selection-end-line="170" selection-end-column="22" />
-          <folding>
-            <marker date="1417881665000" expanded="true" signature="486:528" placeholder="select count..envios..." />
-            <marker date="1417881665000" expanded="true" signature="905:941" placeholder="select count..envios..." />
-            <marker date="1417881665000" expanded="true" signature="1297:1359" placeholder="select * fro..envios..." />
-            <marker date="1417881665000" expanded="true" signature="1412:1449" placeholder="select * fro..envios..." />
-            <marker date="1417881665000" expanded="true" signature="1533:1578" placeholder="select * fro..envios..." />
-            <marker date="1417881665000" expanded="true" signature="1623:1643" placeholder="select * fro..envios..." />
-            <marker date="1417881665000" expanded="true" signature="2359:2397" placeholder="insert into ..." />
-            <marker date="1417881665000" expanded="true" signature="3035:3083" placeholder="update envio..." />
-            <marker date="1417881665000" expanded="true" signature="3386:3423" placeholder="delete from ..." />
-            <marker date="1417881665000" expanded="true" signature="3805:3831" placeholder="select * fro..envios..." />
-            <marker date="1417881665000" expanded="true" signature="4208:4228" placeholder="select * fro..envios..." />
-          </folding>
+        <state vertical-scroll-proportion="0.6666667" vertical-offset="0" max-vertical-offset="465">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
