@@ -53,13 +53,13 @@ class ModeloEnvios{
         $le = [];
         if($inic!=='' && $porPag!=='')
         {
-            //$rs = $this->db->Consulta("select * from envios order by fecha_crea desc limit ".$inic.",".$porPag);
-            $rs = $this->db->Consulta("select * from envios limit ".$inic.",".$porPag);
+            $rs = $this->db->Consulta("select * from envios order by fecha_crea desc limit ".$inic.",".$porPag);
+            //$rs = $this->db->Consulta("select * from envios limit ".$inic.",".$porPag);
         }
         else
         {
-            //$rs = $this->db->Consulta("select * from envios order by fecha_crea desc");
-            $rs = $this->db->Consulta("select * from envios");
+            $rs = $this->db->Consulta("select * from envios order by fecha_crea desc");
+            //$rs = $this->db->Consulta("select * from envios");
 
         }
         while($le[] = $this->db->LeeRegistro($rs));
@@ -164,6 +164,8 @@ class ModeloEnvios{
         else{
             $sql = 'select * from envios';
         }
+
+        $sql .= ' order by fecha_crea desc';
         /*/DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
