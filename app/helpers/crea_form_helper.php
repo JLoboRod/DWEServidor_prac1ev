@@ -43,6 +43,23 @@ function ValorGet($nombreCampo, $valorPorDefecto='')
 }
 
 /**
+ * Muestra $error
+ * @param $error
+ * @return string
+ */
+function VerError($error)
+{
+    if(isset($error))
+    {
+        return $error;
+    }
+    else
+    {
+        return '';
+    }
+}
+
+/**
  *
  * @param string $name Nombre del campo
  * @param array $opciones Opciones que tiene el select

@@ -19,26 +19,157 @@ class controlador{
     }
 
     /**
+     * Filtra los datos $datos y devuelve un array con los
+     * mensajes de error para cada campo
+     * @param $datos
+     * @return array
+     */
+    private function Filtro($datos=array())
+    {
+        $err = array();
+
+        if(isset($datos['cod_envio']))
+        {
+            if($datos['cod_envio']==='')
+            {
+                $err['cod_envio'] = 'Debe introducir un código de envío';
+            }
+            else
+            {
+                if(!filter_var($datos['cod_envio'], FILTER_VALIDATE_INT,
+                    array( 'options' => array('min_range' => 1, 'max_range' => 99999999999))))
+                {
+                    $err['cod_envio'] = 'El código de envío no es correcto.';
+                }
+            }
+        }
+        if(isset($datos['destinatario']))
+        {
+            if(empty($datos['destinatario']))
+            {
+                $err['destinatario'] = 'Debe especificar un destinatario.';
+            }
+            else
+            {
+                $patron = "/^[a-zA-ZaáéíóúäëïöüÁÉÍÓÚÄËÏÖÜñÑ ]+/";
+                if(!preg_match($patron, $datos['destinatario']))
+                {
+                    $err['destinatario'] = 'El destinatario no puede contener números o signos de puntuación.';
+                }
+                else //TODO: Esto lo colocamos para prevenir que se creen envíos
+                {
+                    $err['destinatario'] = $_POST['destinatario'];
+                }
+            }
+        }
+        if(isset($datos['telefono']))
+        {
+            if($datos['telefono']==='')
+            {
+                $err['telefono'] = 'Debe especificar un teléfono de contacto.';
+            }
+            else
+            {
+                $patron = "/(?!:\A|\s)(?!(\d{1,6}\s+\D)|((\d{1,2}\s+){2,2}))(((\+\d{1,3})
+                |(\(\+\d{1,3}\)))\s*)?((\d{1,6})|(\(\d{1,6}\)))\/?(([ -.]?)\d{1,5}){1,5}((\s*
+                (#|x|(ext))\.?\s*)\d{1,5})?(?!:(\Z|\w|\b\s))/";
+
+                if(!preg_match($patron, $datos['telefono']))
+                {
+                    $err['telefono'] = 'El teléfono no es válido.';
+                }
+            }
+        }
+        if(isset($datos['direccion'])) {
+            $patron = "/^[a-zA-Z 0-9 üÜáéíóúÁÉÍÓÚñÑ,.-ºª\"]{1,45}$/";
+
+            if (!$datos['direccion']==='') {
+                if (!preg_match($patron, $datos['direccion'])) {
+                    $err['direccion'] = 'La dirección no es válida.';
+                }
+            }
+        }
+        if(isset($datos['poblacion']))
+        {
+            if(!$datos['poblacion']==='')
+            {
+                if(!preg_match("/^[a-zA-Z ]{1,25}$/", $datos['poblacion']))
+                {
+                    $err['poblacion'] = 'La población no es válida.';
+                }
+            }
+        }
+        if(isset($datos['cod_postal']))
+        {
+            if($datos['cod_postal']!=='')
+            {
+                $patron = "/^0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}$/";
+                if(!preg_match($patron, $datos['cod_postal']))
+                {
+                    $err['cod_postal'] = 'El código postal no es válido.';
+                }
+            }
+        }
+        if(isset($datos['provincia']))
+        {
+            if($datos['provincia']==='00')
+            {
+                $err['provincia'] = 'Debe elegir una provincia.';
+            }
+            else
+            {
+                $patron = "/^0[1-9]|[1-4][0-9]|5[0-2]$/";
+                if(!preg_match($patron, $datos['provincia']))
+                {
+                    $err['provincia'] = 'La provincia no es correcta.';
+                }
+            }
+        }
+        if(isset($datos['email']))
+        {
+            if($datos['email']==='')
+            {
+                $err['email'] = 'Debe especificar una dirección de correo electrónico.';
+            }
+            else
+            {
+                if(!filter_var($datos['email'], FILTER_VALIDATE_EMAIL))
+                {
+                    $err['email'] = 'El email no es válido.';
+                }
+            }
+        }
+        return $err;
+    }
+
+
+    /**
      * Funcion de prueba de vistas
      */
     public function prueba()
     {
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php', 
+        $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+
+        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Esto funciona'
                 ));
 
-        $mensaje = CargarVista(BASE_DIR.'/views/mensaje.php',
-            array(
-                'mensaje' => 'Esto es un mensaje de prueba'
+        if($_POST){
+            $debug = CargarVista(BASE_DIR . '/views/debug.php',
+                array(
+                   'debug' => $this->Filtro($_POST)
                 ));
-        
-        $debug = CargarVista(BASE_DIR.'/views/debug.php',
-            array(
-                'debug' => $this->modeloProvincias->ListarProvinciasIdxCodigo()
+            return $titulo.$debug;
+        }
+        else{
+            $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                array(
+                    'accion' => '?ctrl=controlador&accion=prueba',
+                    'listaProvincias' => $provincias
                 ));
-
-        return $titulo.$mensaje.$debug;
+            return $titulo.$formulario;
+        }
     }
 
     /**
@@ -102,7 +233,7 @@ class controlador{
             {
                 $listaEnvios = $this->modeloEnvios->ListarEnvios($inicio, $resultadosPorPagina);
             }
-            ####################################
+        ####################################
 
             $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
             foreach ($listaEnvios as $id => $envio)
@@ -174,7 +305,42 @@ class controlador{
             /**
              * FILTRADO --> TODO: Falta filtrar la informaciónen crear. En principio suponemos que no hay problemas
              */
+            $errores = $this->Filtro($_POST);
 
+        }
+        if((isset($errores) && !empty($errores)) || !$_POST)
+        {
+            $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+
+            if(isset($errores))
+            {
+                $claseCampoForm = [];
+
+                foreach($errores as $campo => $error)
+                {
+                    $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                }
+
+                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                    array(
+                        'accion' => '?ctrl=controlador&accion=crear',
+                        'listaProvincias' => $provincias,
+                        'errores' => $errores,
+                        'claseCampoForm' => $claseCampoForm
+                    ));
+            }
+            else
+            {
+                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                    array(
+                        'accion' => '?ctrl=controlador&accion=crear',
+                        'listaProvincias' => $provincias
+                    ));
+            }
+            return $titulo . $formulario;
+        }
+        else
+        {
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
             $consulta = $this->modeloEnvios->CrearEnvio($_POST);
@@ -182,18 +348,8 @@ class controlador{
                 array(
                     'mensaje' => 'Envío creado correctamente'
                 ));
+            return $titulo.$mensaje;
         }
-        else {
-            $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
-
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
-                array(
-                    'accion' => '?ctrl=controlador&accion=crear',
-                    'listaProvincias' => $provincias
-                ));
-        }
-
-        return (isset($mensaje))? $titulo.$mensaje: $titulo.$formulario;
     }
 
     /**
@@ -209,35 +365,57 @@ class controlador{
 
         if($_POST) //Venimos de algún formulario
         {
+            $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+
             /**
              * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
              */
+            $errores = $this->Filtro($_POST);
 
             if(count($_POST)===1 && isset($_POST['cod_envio'])) //Si SÓLO hemos especificado el cod_envio y si existe dicho envío...
             {
                 $datosEnvio = $this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']));
 
-                if($datosEnvio) //Si existe el envío especificado
+                if($errores)
                 {
-                    $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
+                    $claseCampoForm = [];
 
-                    //Mostramos el formulario de edición de envío
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_envio.php',
+                    foreach($errores as $campo => $error)
+                    {
+                        $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                    }
+
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
                         array(
                             'accion' => '?ctrl=controlador&accion=editar',
-                            'datosEnvio' => $datosEnvio[0],
-                            'listaProvincias' => $provincias
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
                         ));
+
                     return $titulo.$formulario;
                 }
                 else
                 {
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
-                        array(
-                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
-                        ));
+                    if ($datosEnvio) //Si existe el envío especificado
+                    {
+                        //Mostramos el formulario de edición de envío
+                        $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_envio.php',
+                            array(
+                                'accion' => '?ctrl=controlador&accion=editar',
+                                'datosEnvio' => $datosEnvio[0],
+                                'listaProvincias' => $provincias
+                            ));
+                        return $titulo . $formulario;
+                    }
+                    else
+                    {
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                            array(
+                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                            ));
 
-                    return $titulo.$mensaje;
+                        return $titulo . $mensaje;
+                    }
                 }
             }
             else //Hemos especificado más datos -> venimos del formulario de edición
@@ -245,18 +423,39 @@ class controlador{
                 /**
                  * FILTRADO --> TODO: Falta filtrar la información en editar. En principio suponemos que no hay problemas
                  */
+                if($errores)
+                {
+                    $claseCampoForm = [];
 
-                $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
-                $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
-                    array(
-                        'mensaje' => 'Envío modificado correctamente.'
-                    ));
+                    foreach($errores as $campo => $error)
+                    {
+                        $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                    }
 
-                return $titulo.$mensaje;
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_crea  _envio.php',
+                        array(
+                            'accion' => '?ctrl=controlador&accion=editar',
+                            'listaProvincias' => $provincias,
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
+                        ));
+                    return $titulo.$formulario;
+                }
+                else
+                {
+                    $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        array(
+                            'mensaje' => 'Envío modificado correctamente.'
+                        ));
+
+                    return $titulo . $mensaje;
+                }
             }
 
         }
-        else {  //Mostramos el formulario de elección de pedido
+        else //Mostramos el formulario de elección de pedido
+        {
 
             $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
@@ -283,28 +482,48 @@ class controlador{
         if($_POST)
         {
 
+            $errores = $this->Filtro($_POST);
+
             if(count($_POST)===1 && isset($_POST['cod_envio']))
             {
                 /**
                  * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
                  */
 
-                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
-
-                    $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
-                        array(
-                            'mensaje' => 'Envío eliminado correctamente.'
-                        ));
-                }
-                else
+                if($errores)
                 {
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                    $claseCampoForm = [];
+
+                    foreach($errores as $campo => $error)
+                    {
+                        $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                    }
+
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
                         array(
-                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                            'accion' => '?ctrl=controlador&accion=eliminar',
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
                         ));
+
+                    return $titulo.$formulario;
                 }
-                return $titulo.$mensaje;
+                else {
+                    if ($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
+
+                        $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                            array(
+                                'mensaje' => 'Envío eliminado correctamente.'
+                            ));
+                    } else {
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                            array(
+                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                            ));
+                    }
+                    return $titulo . $mensaje;
+                }
             }
         }
         else
@@ -331,33 +550,49 @@ class controlador{
 
         if($_POST)
         {
-            if(count($_POST)===1 && isset($_POST['cod_envio']))
-            {
+            $errores = $this->Filtro($_POST);
+
+            if(count($_POST)===1 && isset($_POST['cod_envio'])) {
                 /**
                  * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
                  */
+                if ($errores) {
+                    $claseCampoForm = [];
 
-                if($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) { //Si existe el envío especificado
-                    //Cambiamos el estado del envío a Entregado y anotamos la fecha de entrega
-                    $this->modeloEnvios->EditarEnvio($_POST['cod_envio'],
-                        array('estado' => 'E',
-                              'fecha_ent' => date('Y-m-d')
+                    foreach ($errores as $campo => $error) {
+                        $claseCampoForm[$campo] = ($error === '') ? '' : 'has-error';
+                    }
+
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
+                        array(
+                            'accion' => '?ctrl=controlador&accion=editar',
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
                         ));
 
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
-                        array(
-                            'mensaje' => 'Recepción anotada correctamente.'
-                        ));
+                    return $titulo . $formulario;
+                } else {
+
+                    if ($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) { //Si existe el envío especificado
+                        //Cambiamos el estado del envío a Entregado y anotamos la fecha de entrega
+                        $this->modeloEnvios->EditarEnvio($_POST['cod_envio'],
+                            array('estado' => 'E',
+                                'fecha_ent' => date('Y-m-d')
+                            ));
+
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                            array(
+                                'mensaje' => 'Recepción anotada correctamente.'
+                            ));
+                    } else {
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                            array(
+                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                            ));
+                    }
                 }
-                else
-                {
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
-                        array(
-                            'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
-                        ));
-                }
+                return $titulo . $mensaje;
             }
-            return $titulo.$mensaje;
         }
         else
         {

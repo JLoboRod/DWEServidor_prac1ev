@@ -12,7 +12,7 @@
     <div class="form-group <?=$claseCampoForm['direccion']?>">
         <label class="control-label" for="direccion">Dirección</label>
         <input type="text" class="form-control" name="direccion" id="direccion" value="<?=ValorPost('direccion')?>" placeholder="Introduzca la dirección de contacto">
-        <span class="help-block"><?=(isset($errores['direccion']))?$errores['direccion']:''?></span>
+        <span class="help-block"><?=(isset($errores['direccion']))?$errores['direccion']:''?>/span>
     </div>
     <div class="form-group <?=$claseCampoForm['poblacion']?>">
         <label class="control-label" for="poblacion">Población</label>
