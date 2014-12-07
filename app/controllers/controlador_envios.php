@@ -614,7 +614,10 @@ class ControladorEnvios{
             {
                 if($valor) //Sólo tendremos en cuenta los campos que el usuario complete
                 {
-                    $datos[$clave] = $valor;
+                    if ($valor != '00') //Con esto prevenimos que el valor 00 entre como criterio de búsqueda
+                    {
+                        $datos[$clave] = $valor;
+                    }
                 }
             }
 
