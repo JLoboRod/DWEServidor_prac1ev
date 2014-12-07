@@ -166,7 +166,7 @@ class ModeloEnvios{
         }
 
         $sql .= ' order by fecha_crea desc';
-        /*/DEBUG: Mostramos la sentencia sql
+        //DEBUG: Mostramos la sentencia sql
         echo "<pre>";
         print_r($sql);
         echo "</pre>";

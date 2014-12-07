@@ -10,37 +10,37 @@
                 </a>
             </li>
             <li>
-                <a id="" class="is-menu" href="?ctrl=controlador&accion=listar">
+                <a id="" class="is-menu" href="?opcion=listar">
                     <span class="glyphicon glyphicon-list-alt azul"></span>
                     Listar envíos
                 </a>
             </li>
             <li>
-                <a id="" class="is-menu" href="?ctrl=controlador&accion=crear">
+                <a id="" class="is-menu" href="?opcion=crear">
                     <span class="glyphicon glyphicon-plus"></span>
                     Crear envío
                 </a>
             </li>
             <li>
-                <a id="" class="is-menu" href="?ctrl=controlador&accion=editar">
+                <a id="" class="is-menu" href="?opcion=editar">
                     <span class="glyphicon glyphicon-pencil"></span>
                     Editar envío
                 </a>
             </li>
             <li>
-                <a id="" class="is-menu" href="?ctrl=controlador&accion=eliminar">
+                <a id="" class="is-menu" href="?opcion=eliminar">
                     <span class="glyphicon glyphicon-trash"></span>
                     Eliminar envío
                 </a>
             </li>
             <li>
-                <a id="tab-information" class="is-menu" href="?ctrl=controlador&accion=anotar_recepcion">
+                <a id="tab-information" class="is-menu" href="?opcion=anotar_recepcion">
                     <span class="glyphicon glyphicon-book"></span>
                     Anotar recepción
                 </a>
             </li>
             <li>
-                <a id="" class="is-menu tip" href="?ctrl=controlador&accion=buscar">
+                <a id="" class="is-menu tip" href="?opcion=buscar">
                     <span class="glyphicon glyphicon-search"></span>
                     Buscar envíos
                 </a>

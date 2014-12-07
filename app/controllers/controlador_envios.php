@@ -6,7 +6,7 @@
 include_once BASE_DIR . '/models/modelo_envios.php';
 include_once BASE_DIR . '/models/modelo_provincias.php';
 
-class controlador{
+class ControladorEnvios{
 
     //TODO: Filtrar la información que llega de los formularios
 
@@ -165,7 +165,7 @@ class controlador{
         else{
             $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
                 array(
-                    'accion' => '?ctrl=controlador&accion=prueba',
+                    'accion' => '?opcion=prueba',
                     'listaProvincias' => $provincias
                 ));
             return $titulo.$formulario;
@@ -176,7 +176,7 @@ class controlador{
      * Función inicio que se ejecuta por defecto
      * @return string
      */
-    public function inicio(){
+    public function Inicio(){
         //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
         $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
             array(
@@ -190,7 +190,7 @@ class controlador{
      * Functión que trata el evento de listar envíos
      * @return string
      */
-    public function listar()
+    public function ListarEnvios()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
                 array(
@@ -219,7 +219,7 @@ class controlador{
             //Cargamos el paginador con los datos adecuados
              $paginador = CargarVista(BASE_DIR . '/views/paginador.php',
                 array(
-                    'href' => '?ctrl=controlador&accion=listar&pagina=',
+                    'href' => '?opcion=listar&pagina=',
                     'paginaActual' => $paginaActual,
                     'numeroPaginas' => $numeroPaginas
                 ));
@@ -293,7 +293,7 @@ class controlador{
      * Función que trata el evento de crear envío
      * @return string
      */
-    public function crear()
+    public function CrearEnvio()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
             array(
@@ -323,7 +323,7 @@ class controlador{
 
                 $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
                     array(
-                        'accion' => '?ctrl=controlador&accion=crear',
+                        'accion' => '?opcion=crear',
                         'listaProvincias' => $provincias,
                         'errores' => $errores,
                         'claseCampoForm' => $claseCampoForm
@@ -333,7 +333,7 @@ class controlador{
             {
                 $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
                     array(
-                        'accion' => '?ctrl=controlador&accion=crear',
+                        'accion' => '?opcion=crear',
                         'listaProvincias' => $provincias
                     ));
             }
@@ -356,7 +356,7 @@ class controlador{
      * Función que trata el evento de editar envío
      * @return string
      */
-    public function editar()
+    public function EditarEnvio()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
             array(
@@ -367,9 +367,7 @@ class controlador{
         {
             $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
 
-            /**
-             * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
-             */
+            //Filtrado
             $errores = $this->Filtro($_POST);
 
             if(count($_POST)===1 && isset($_POST['cod_envio'])) //Si SÓLO hemos especificado el cod_envio y si existe dicho envío...
@@ -385,9 +383,9 @@ class controlador{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                         array(
-                            'accion' => '?ctrl=controlador&accion=editar',
+                            'accion' => '?opcion=editar',
                             'errores' => $errores,
                             'claseCampoForm' => $claseCampoForm
                         ));
@@ -401,7 +399,7 @@ class controlador{
                         //Mostramos el formulario de edición de envío
                         $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_envio.php',
                             array(
-                                'accion' => '?ctrl=controlador&accion=editar',
+                                'accion' => '?opcion=editar',
                                 'datosEnvio' => $datosEnvio[0],
                                 'listaProvincias' => $provincias
                             ));
@@ -420,9 +418,6 @@ class controlador{
             }
             else //Hemos especificado más datos -> venimos del formulario de edición
             {
-                /**
-                 * FILTRADO --> TODO: Falta filtrar la información en editar. En principio suponemos que no hay problemas
-                 */
                 if($errores)
                 {
                     $claseCampoForm = [];
@@ -434,7 +429,7 @@ class controlador{
 
                     $formulario = CargarVista(BASE_DIR . '/views/formulario_crea  _envio.php',
                         array(
-                            'accion' => '?ctrl=controlador&accion=editar',
+                            'accion' => '?opcion=editar',
                             'listaProvincias' => $provincias,
                             'errores' => $errores,
                             'claseCampoForm' => $claseCampoForm
@@ -459,7 +454,7 @@ class controlador{
 
             $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => '?ctrl=controlador&accion=editar'
+                    'accion' => '?opcion=editar'
 
                 ));
 
@@ -472,7 +467,7 @@ class controlador{
      * Función que trata el evento de eliminar envío
      * @return string
      */
-    public function eliminar()
+    public function EliminarEnvio()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
             array(
@@ -481,15 +476,10 @@ class controlador{
 
         if($_POST)
         {
-
             $errores = $this->Filtro($_POST);
 
             if(count($_POST)===1 && isset($_POST['cod_envio']))
             {
-                /**
-                 * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
-                 */
-
                 if($errores)
                 {
                     $claseCampoForm = [];
@@ -499,9 +489,9 @@ class controlador{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                         array(
-                            'accion' => '?ctrl=controlador&accion=eliminar',
+                            'accion' => '?opcion=eliminar',
                             'errores' => $errores,
                             'claseCampoForm' => $claseCampoForm
                         ));
@@ -530,7 +520,7 @@ class controlador{
         {
             $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => '?ctrl=controlador&accion=eliminar'
+                    'accion' => '?opcion=eliminar'
                 ));
 
             return $titulo.$formulario;
@@ -541,7 +531,7 @@ class controlador{
      * Función que trata el evento de anotar recepción de un envío
      * @return string
      */
-    public function anotar_recepcion()
+    public function AnotarRecepcion()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
             array(
@@ -563,9 +553,9 @@ class controlador{
                         $claseCampoForm[$campo] = ($error === '') ? '' : 'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_con_errores.php',
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                         array(
-                            'accion' => '?ctrl=controlador&accion=editar',
+                            'accion' => '?opcion=editar',
                             'errores' => $errores,
                             'claseCampoForm' => $claseCampoForm
                         ));
@@ -598,7 +588,7 @@ class controlador{
         {
             $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
-                    'accion' => '?ctrl=controlador&accion=anotar_recepcion'
+                    'accion' => '?opcion=anotar_recepcion'
                 ));
             return $titulo.$formulario;
         }
@@ -608,7 +598,7 @@ class controlador{
      * Función que trata el evento de buscar envío
      * @return string
      */
-    public function buscar()
+    public function BuscarEnvios()
     {
         $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
             array(
@@ -687,7 +677,7 @@ class controlador{
 
             $formulario = CargarVista(BASE_DIR.'/views/formulario_crea_envio.php',
                 array(
-                    'accion' => '?ctrl=controlador&accion=buscar',
+                    'accion' => '?opcion=buscar',
                     'listaProvincias' => $listaProvincias
                 ));
             return $titulo.$formulario;

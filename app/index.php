@@ -8,20 +8,53 @@ define('BASE_DIR', __DIR__);
 require_once BASE_DIR . '/config.php';
 require_once BASE_DIR . '/helpers/carga_vista_helper.php';
 require_once BASE_DIR . '/helpers/crea_form_helper.php';
+require_once BASE_DIR . '/controllers/controlador_envios.php';
 
-//Procesamos la url
-$ctrl = isset($_GET['ctrl'])? $_GET['ctrl'] : 'controlador';
-$accion = isset($_GET['accion'])? $_GET['accion'] : 'inicio';
+// enrutamiento
+$map = array(
+    'inicio' => array('controlador' =>'ControladorEnvios', 'accion' =>'Inicio'),
+    'listar' => array('controlador' =>'ControladorEnvios', 'accion' =>'ListarEnvios'),
+    'crear' => array('controlador' =>'ControladorEnvios', 'accion' =>'CrearEnvio'),
+    'editar' => array('controlador' =>'ControladorEnvios', 'accion' =>'EditarEnvio'),
+    'eliminar' => array('controlador'=>'ControladorEnvios','accion'=>'EliminarEnvio'),
+    'buscar' => array('controlador' =>'ControladorEnvios', 'accion' =>'BuscarEnvios'),
+    'anotar_recepcion' => array('controlador' =>'ControladorEnvios', 'accion' =>'AnotarRecepcion')
+);
 
-//Incluimos el archivo del controlador adecuado
-include BASE_DIR.'/controllers/'.$ctrl.'.php';
+// Parseo de la ruta
+if (isset($_GET['opcion']))
+{
+    if (isset($map[$_GET['opcion']]))
+    {
+        $ruta = $_GET['opcion'];
+    }
+    else
+    {
+        header('Status: 404 Not Found');
+        echo '<html><body><h1>Error 404: No existe la ruta <i>' .
+            $_GET['opcion'] .
+            '</p></body></html>';
+        exit;
+    }
+}
+else
+{
+    $ruta = 'inicio';
+}
 
-//Creamos el controlador seleccionado
-$c = new $ctrl;
+$controlador = $map[$ruta]['controlador'];
+$accion = $map[$ruta]['accion'];
+// Ejecución del controlador asociado a la ruta
 
-//Invocamos la acción del controlador seleccionado.
-//La acción utilizará el mecanismo de plantillas para
-//devolver el código de la vista que genera
-$htmlCuerpo = $c->{$accion}();
+$c = new $controlador;
+if(!$htmlCuerpo = $c->{$accion}())
+{
+    header('Status: 404 Not Found');
+    echo '<html><body><h1>Error 404: El controlador <i>' .
+        $controlador .
+        '->' .
+        $accion .
+        '</i> no existe</h1></body></html>';
+}
 
 include BASE_DIR.'/views/plantilla.php';
