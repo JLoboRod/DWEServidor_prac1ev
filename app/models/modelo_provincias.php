@@ -4,7 +4,7 @@
  */
 
 // Incluimos el fichero de la capa de abstracción
-require_once BASE_DIR.'/models/db.php';
+require_once APP_DIR.'/models/db.php';
 
 class ModeloProvincias{
 

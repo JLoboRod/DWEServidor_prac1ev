@@ -3,8 +3,8 @@
  * CONTROLADOR DE ENVÍOS
  */
 
-include_once BASE_DIR . '/models/modelo_envios.php';
-include_once BASE_DIR . '/models/modelo_provincias.php';
+include_once APP_DIR . '/models/modelo_envios.php';
+include_once APP_DIR . '/models/modelo_provincias.php';
 
 class ControladorEnvios{
 
@@ -142,7 +142,7 @@ class ControladorEnvios{
      */
     public function Inicio(){
         //Ahora utilizamos cargar_vista_helper para generar el html del cuerpo
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
+        $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Inicio'
             ));
@@ -156,7 +156,7 @@ class ControladorEnvios{
      */
     public function ListarEnvios()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
                 array(
                     'tituloPagina' => 'Listar envíos'
                     ));
@@ -181,7 +181,7 @@ class ControladorEnvios{
         if($total>0 && $paginaActual>0 && $paginaActual<=$numeroPaginas)
         {
             //Cargamos el paginador con los datos adecuados
-             $paginador = CargarVista(BASE_DIR . '/views/paginador.php',
+             $paginador = CargarVista(APP_DIR . '/views/paginador.php',
                 array(
                     'href' => '?opcion=listar&pagina=',
                     'paginaActual' => $paginaActual,
@@ -232,7 +232,7 @@ class ControladorEnvios{
 
             }
 
-            $listar = CargarVista(BASE_DIR . '/views/listar.php',
+            $listar = CargarVista(APP_DIR . '/views/listar.php',
                 array(
                     'listaEnvios' => $listaEnvios
                     ));
@@ -243,7 +243,7 @@ class ControladorEnvios{
         }
         else
         {
-            $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+            $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                 array(
                     'mensaje' => 'No hay envíos registrados.'
                     ));
@@ -259,7 +259,7 @@ class ControladorEnvios{
      */
     public function CrearEnvio()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear nuevo envío'
             ));
@@ -282,7 +282,7 @@ class ControladorEnvios{
                     $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                 }
 
-                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                $formulario = CargarVista(APP_DIR . '/views/formulario_crea_envio.php',
                     array(
                         'accion' => '?opcion=crear',
                         'listaProvincias' => $provincias,
@@ -292,7 +292,7 @@ class ControladorEnvios{
             }
             else
             {
-                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                $formulario = CargarVista(APP_DIR . '/views/formulario_crea_envio.php',
                     array(
                         'accion' => '?opcion=crear',
                         'listaProvincias' => $provincias
@@ -305,7 +305,7 @@ class ControladorEnvios{
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
             $consulta = $this->modeloEnvios->CrearEnvio($_POST);
-            $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+            $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                 array(
                     'mensaje' => 'Envío creado correctamente'
                 ));
@@ -319,7 +319,7 @@ class ControladorEnvios{
      */
     public function EditarEnvio()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar envío'
                 ));
@@ -344,7 +344,7 @@ class ControladorEnvios{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                         array(
                             'accion' => '?opcion=editar',
                             'errores' => $errores,
@@ -358,7 +358,7 @@ class ControladorEnvios{
                     if ($datosEnvio) //Si existe el envío especificado
                     {
                         //Mostramos el formulario de edición de envío
-                        $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_envio.php',
+                        $formulario = CargarVista(APP_DIR . '/views/formulario_edita_envio.php',
                             array(
                                 'accion' => '?opcion=editar',
                                 'datosEnvio' => $datosEnvio[0],
@@ -368,7 +368,7 @@ class ControladorEnvios{
                     }
                     else
                     {
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
                                 'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                             ));
@@ -388,7 +388,7 @@ class ControladorEnvios{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_crea_envio.php',
                         array(
                             'accion' => '?opcion=editar',
                             'listaProvincias' => $provincias,
@@ -400,7 +400,7 @@ class ControladorEnvios{
                 else
                 {
                     $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+                    $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                         array(
                             'mensaje' => 'Envío modificado correctamente.'
                         ));
@@ -413,7 +413,7 @@ class ControladorEnvios{
         else //Mostramos el formulario de elección de pedido
         {
 
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                 array(
                     'accion' => '?opcion=editar'
                 ));
@@ -429,7 +429,7 @@ class ControladorEnvios{
      */
     public function EliminarEnvio()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
             ));
@@ -449,7 +449,7 @@ class ControladorEnvios{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                         array(
                             'accion' => '?opcion=eliminar',
                             'errores' => $errores,
@@ -462,12 +462,12 @@ class ControladorEnvios{
                     if ($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
 
                         $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                             array(
                                 'mensaje' => 'Envío eliminado correctamente.'
                             ));
                     } else {
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
                                 'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                             ));
@@ -478,7 +478,7 @@ class ControladorEnvios{
         }
         else
         {
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                 array(
                     'accion' => '?opcion=eliminar'
                 ));
@@ -493,7 +493,7 @@ class ControladorEnvios{
      */
     public function AnotarRecepcion()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
             ));
@@ -511,7 +511,7 @@ class ControladorEnvios{
                         $claseCampoForm[$campo] = ($error === '') ? '' : 'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                         array(
                             'accion' => '?opcion=editar',
                             'errores' => $errores,
@@ -528,12 +528,12 @@ class ControladorEnvios{
                                 'fecha_ent' => date('Y-m-d')
                             ));
 
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                             array(
                                 'mensaje' => 'Recepción anotada correctamente.'
                             ));
                     } else {
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
                                 'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
                             ));
@@ -544,7 +544,7 @@ class ControladorEnvios{
         }
         else
         {
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_sel_envio.php',
                 array(
                     'accion' => '?opcion=anotar_recepcion'
                 ));
@@ -558,7 +558,7 @@ class ControladorEnvios{
      */
     public function BuscarEnvios()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Buscar envíos'
             ));
@@ -616,7 +616,7 @@ class ControladorEnvios{
 
                 }
 
-                $listar = CargarVista(BASE_DIR . '/views/listar.php',
+                $listar = CargarVista(APP_DIR . '/views/listar.php',
                     array(
                         'listaEnvios' => $listaEnvios
                     ));
@@ -625,7 +625,7 @@ class ControladorEnvios{
             }
             else
             {
-                $mensaje = CargarVista(BASE_DIR.'/views/mensaje.php',
+                $mensaje = CargarVista(APP_DIR.'/views/mensaje.php',
                     array(
                         'mensaje' => 'No hay envíos que cumplan esas condiciones.'
                     ));
@@ -636,7 +636,7 @@ class ControladorEnvios{
         {
             $listaProvincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
 
-            $formulario = CargarVista(BASE_DIR.'/views/formulario_crea_envio.php',
+            $formulario = CargarVista(APP_DIR.'/views/formulario_crea_envio.php',
                 array(
                     'accion' => '?opcion=buscar',
                     'listaProvincias' => $listaProvincias

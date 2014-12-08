@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="Añadidas variables $tiempoSesion y $paginacion al archivo de configuración.&#10;Se ha incluido en archivo bd.sql con el código de la base de datos utilizada.&#10;Solucionado el error porque el que no se cerraba la sesión cuando el tiempo de sesión expiraba.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/install/bd.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config.php" afterPath="$PROJECT_DIR$/app/config.php" />
+    <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_envios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.php" afterPath="$PROJECT_DIR$/app/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/listar.php" afterPath="$PROJECT_DIR$/app/views/listar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/modelo_envios.php" afterPath="$PROJECT_DIR$/app/models/modelo_envios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/modelo_provincias.php" afterPath="$PROJECT_DIR$/app/models/modelo_provincias.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/modelo_usuarios.php" afterPath="$PROJECT_DIR$/app/models/modelo_usuarios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plantilla.php" afterPath="$PROJECT_DIR$/app/views/plantilla.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DWEServidor_prac1ev.iws" />
@@ -35,8 +38,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="240" max-vertical-offset="1470">
-              <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+            <state vertical-scroll-proportion="-6.25" vertical-offset="30" max-vertical-offset="1485">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
               <folding>
                 <element signature="e#6#36#0#PHP" expanded="true" />
               </folding>
@@ -44,11 +47,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="plantilla.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25" vertical-offset="15" max-vertical-offset="555">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding>
+                <marker date="1418072370000" expanded="true" signature="496:521" placeholder="..." />
+                <marker date="1418072370000" expanded="true" signature="604:632" placeholder="..." />
+                <marker date="1418072370000" expanded="true" signature="711:930" placeholder="..." />
+                <marker date="1418072370000" expanded="true" signature="743:919" placeholder="..." />
+                <marker date="1418072370000" expanded="true" signature="852:904" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58900523" vertical-offset="0" max-vertical-offset="435">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+            <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="435">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#6#58#0#PHP" expanded="true" />
               </folding>
@@ -68,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="2400" max-vertical-offset="9780">
-              <caret line="176" column="51" selection-start-line="176" selection-start-column="51" selection-end-line="176" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.5104712" vertical-offset="495" max-vertical-offset="9780">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding>
                 <element signature="e#6#38#0#PHP" expanded="true" />
               </folding>
@@ -83,7 +102,7 @@
       <file leaf-file-name="controlador_usuarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-72.5" vertical-offset="0" max-vertical-offset="5730">
+            <state vertical-scroll-proportion="46.875" vertical-offset="2865" max-vertical-offset="5730">
               <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
               <folding>
                 <element signature="e#6#40#0#PHP" expanded="true" />
@@ -146,7 +165,6 @@
         <option value="$PROJECT_DIR$/app/views/formulario_sel_envio.php" />
         <option value="$PROJECT_DIR$/app/models/modelo_envios.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_login.php" />
-        <option value="$PROJECT_DIR$/app/views/plantilla.php" />
         <option value="$PROJECT_DIR$/app/views/lista_usuarios.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_acceso.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_sel_usuario.php" />
@@ -164,8 +182,9 @@
         <option value="$PROJECT_DIR$/app/helpers/crea_form_helper.php" />
         <option value="$PROJECT_DIR$/app/views/menu_navegacion.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/app/index.php" />
         <option value="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
+        <option value="$PROJECT_DIR$/app/index.php" />
+        <option value="$PROJECT_DIR$/app/views/plantilla.php" />
         <option value="$PROJECT_DIR$/app/config.php" />
       </list>
     </option>
@@ -232,24 +251,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DWEServidor_prac1ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DWEServidor_prac1ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -362,7 +363,13 @@
       <option name="project" value="LOCAL" />
       <updated>1418066445487</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Añadidas variables $tiempoSesion y $paginacion al archivo de configuración.&#10;Se ha incluido en archivo bd.sql con el código de la base de datos utilizada.&#10;Solucionado el error porque el que no se cerraba la sesión cuando el tiempo de sesión expiraba.">
+      <created>1418071730053</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1418071730053</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -414,7 +421,8 @@
     <MESSAGE value="Solucionado problema de búsqueda. Ahora no se tiene en cuenta el valor '00' de provincia como criterio de búsqueda." />
     <MESSAGE value="Añadida la validación de múltiples usuarios.&#10;El usuario tendrá que hacer login para poder acceder a las funcionalidades de la aplicación.&#10;Se ha añadido un nuevo menú para la gestión de usuarios." />
     <MESSAGE value="Solución de pequeños problemas y mejora de la apariencia de la aplicación." />
-    <option name="LAST_COMMIT_MESSAGE" value="Solución de pequeños problemas y mejora de la apariencia de la aplicación." />
+    <MESSAGE value="Añadidas variables $tiempoSesion y $paginacion al archivo de configuración.&#10;Se ha incluido en archivo bd.sql con el código de la base de datos utilizada.&#10;Solucionado el error porque el que no se cerraba la sesión cuando el tiempo de sesión expiraba." />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadidas variables $tiempoSesion y $paginacion al archivo de configuración.&#10;Se ha incluido en archivo bd.sql con el código de la base de datos utilizada.&#10;Solucionado el error porque el que no se cerraba la sesión cuando el tiempo de sesión expiraba." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -463,15 +471,15 @@
           <caret line="25" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="179" selection-end-column="1" />
           <folding>
             <element signature="e#6#35#0#PHP" expanded="true" />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="update envio..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="update envio..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
           </folding>
         </state>
       </provider>
@@ -488,14 +496,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="555">
-          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -521,12 +521,12 @@
         <state vertical-scroll-proportion="51.583332" vertical-offset="1238" max-vertical-offset="1845">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
-            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
           </folding>
         </state>
       </provider>
@@ -609,17 +609,17 @@
           <caret line="113" column="79" selection-start-line="113" selection-start-column="79" selection-end-line="113" selection-end-column="79" />
           <folding>
             <element signature="e#6#37#0#PHP" expanded="true" />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select count..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select count..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="update usuar..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="update usuar..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
-            <marker date="1418059521000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select count..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select count..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="update usuar..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="update usuar..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
+            <marker date="1418071869000" expanded="true" signature="-1:-1" placeholder="select * fro..usuarios..." />
           </folding>
         </state>
       </provider>
@@ -637,16 +637,6 @@
         <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="210">
           <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-72.5" vertical-offset="0" max-vertical-offset="5730">
-          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
-          <folding>
-            <element signature="e#6#40#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,32 +693,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="2400" max-vertical-offset="9780">
-          <caret line="176" column="51" selection-start-line="176" selection-start-column="51" selection-end-line="176" selection-end-column="51" />
-          <folding>
-            <element signature="e#6#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="240" max-vertical-offset="1470">
-          <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
+        <state vertical-scroll-proportion="-6.25" vertical-offset="30" max-vertical-offset="1485">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding>
             <element signature="e#6#36#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25" vertical-offset="15" max-vertical-offset="555">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <marker date="1418072370000" expanded="true" signature="496:521" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="604:632" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="711:930" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="743:919" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="852:904" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58900523" vertical-offset="0" max-vertical-offset="435">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="435">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#6#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="46.875" vertical-offset="2865" max-vertical-offset="5730">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+          <folding>
+            <element signature="e#6#40#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5104712" vertical-offset="495" max-vertical-offset="9780">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

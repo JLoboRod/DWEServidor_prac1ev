@@ -3,7 +3,7 @@
  * CONTROLADOR DE USUARIOS
  */
 
-include_once BASE_DIR . '/models/modelo_usuarios.php';
+include_once APP_DIR . '/models/modelo_usuarios.php';
 
 class ControladorUsuarios
 {
@@ -64,7 +64,7 @@ class ControladorUsuarios
      */
     public function Acceder()
     {
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
+        $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Acceder'
             ));
@@ -78,7 +78,7 @@ class ControladorUsuarios
             {
                 $_SESSION['usuario'] = $datosUsuario['usuario']; //Establecemos nombre a la sesión
                 $_SESSION['hora'] = time();
-                $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+                $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                     array(
                         'mensaje' => 'Bienvenido <strong>'.$_SESSION['usuario'].'</strong>, ahora puedes acceder a
                         las funcionalidades de la aplicación.'
@@ -87,11 +87,11 @@ class ControladorUsuarios
             }
             else
             {
-                $formulario = CargarVista(BASE_DIR . '/views/formulario_acceso.php',
+                $formulario = CargarVista(APP_DIR . '/views/formulario_acceso.php',
                     array(
                         'accion' => '?opcion=acceder'
                     ));
-                $mensaje = CargarVista(BASE_DIR . '/views/mensaje_error.php',
+                $mensaje = CargarVista(APP_DIR . '/views/mensaje_error.php',
                     array(
                         'mensaje' => 'Datos erróneos. Por favor, inténtelo otra vez.'
                     ));
@@ -100,7 +100,7 @@ class ControladorUsuarios
         }
         else
         {
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_acceso.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_acceso.php',
                 array(
                     'accion' => '?opcion=acceder'
                 ));
@@ -126,7 +126,7 @@ class ControladorUsuarios
      */
     public function ListarUsuarios()
     {
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
+        $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Usuarios registrados'
             ));
@@ -135,7 +135,7 @@ class ControladorUsuarios
 
         if($listaUsuarios)
         {
-            $listarUsuarios = CargarVista(BASE_DIR.'/views/listar_usuarios.php',
+            $listarUsuarios = CargarVista(APP_DIR.'/views/listar_usuarios.php',
                 array(
                     'listaUsuarios' => $listaUsuarios
                 ));
@@ -144,7 +144,7 @@ class ControladorUsuarios
         }
         else
         {
-            $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+            $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                 array(
                    'mensaje' => 'No hay usuarios registrados.'
                 ));
@@ -158,7 +158,7 @@ class ControladorUsuarios
      */
     public function CrearUsuario()
     {
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
+        $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear usuario'
             ));
@@ -178,7 +178,7 @@ class ControladorUsuarios
                     $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                 }
 
-                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_usuario.php',
+                $formulario = CargarVista(APP_DIR . '/views/formulario_crea_usuario.php',
                     array(
                         'accion' => '?opcion=crear_usuario',
                         'errores' => $errores,
@@ -187,7 +187,7 @@ class ControladorUsuarios
             }
             else
             {
-                $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_usuario.php',
+                $formulario = CargarVista(APP_DIR . '/views/formulario_crea_usuario.php',
                     array(
                         'accion' => '?opcion=crear_usuario'
                     ));
@@ -199,7 +199,7 @@ class ControladorUsuarios
             //Encriptamos la contraseña del usuario
             $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $consulta = $this->modeloUsuarios->CrearUsuario($_POST);
-            $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+            $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                 array(
                     'mensaje' => 'Usuario creado correctamente'
                 ));
@@ -212,7 +212,7 @@ class ControladorUsuarios
      */
     public function EditarUsuario()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar usuario'
             ));
@@ -226,7 +226,7 @@ class ControladorUsuarios
 
                 if($errores)
                 {
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_usuario.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_sel_usuario.php',
                         array(
                             'accion' => '?opcion=editar_usuario',
                             'errores' => $errores
@@ -237,7 +237,7 @@ class ControladorUsuarios
                     if ($datosUsuario) //El usuario existe
                     {
                         $_SESSION['editar_usuario']=$datosUsuario['usuario']; //almacenamos en la sesión en usuario a editar
-                        $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_usuario.php',
+                        $formulario = CargarVista(APP_DIR . '/views/formulario_edita_usuario.php',
                             array(
                                 'accion' => '?opcion=editar_usuario'
                             ));
@@ -245,7 +245,7 @@ class ControladorUsuarios
                     }
                     else
                     {
-                        $mensaje = CargarVista(BASE_DIR.'/views/mensaje.php',
+                        $mensaje = CargarVista(APP_DIR.'/views/mensaje.php',
                             array(
                                'mensaje' => 'El usuario especificado no está registrado.'
                             ));
@@ -258,7 +258,7 @@ class ControladorUsuarios
             {
                 if($errores)
                 {
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_edita_usuario.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_edita_usuario.php',
                         array(
                             'accion' => '?opcion=editar_usuario',
                             'errores' => $errores
@@ -273,7 +273,7 @@ class ControladorUsuarios
                             'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
                         ));
 
-                    $mensaje = CargarVista(BASE_DIR.'/views/mensaje_exito.php',
+                    $mensaje = CargarVista(APP_DIR.'/views/mensaje_exito.php',
                         array(
                            'mensaje' => 'Password actualizado con éxito.'
                         ));
@@ -287,7 +287,7 @@ class ControladorUsuarios
         else //Mostramos el formulario de elección de pedido
         {
 
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_usuario.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_sel_usuario.php',
                 array(
                     'accion' => '?opcion=editar_usuario'
                 ));
@@ -301,7 +301,7 @@ class ControladorUsuarios
      */
     function EliminarUsuario()
     {
-        $titulo = CargarVista(BASE_DIR . '/views/titulo.php',
+        $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
             ));
@@ -321,7 +321,7 @@ class ControladorUsuarios
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_usuario.php',
+                    $formulario = CargarVista(APP_DIR . '/views/formulario_sel_usuario.php',
                         array(
                             'accion' => '?opcion=eliminar_usuario',
                             'errores' => $errores,
@@ -337,14 +337,14 @@ class ControladorUsuarios
                         if($usuario['usuario']!==$_SESSION['usuario'])
                         {
                             $this->modeloUsuarios->EliminarUsuario($_POST['usuario']);
-                            $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
+                            $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                                 array(
                                     'mensaje' => 'Usuario eliminado correctamente.'
                                 ));
                         }
                         else
                         {
-                            $mensaje = CargarVista(BASE_DIR . '/views/mensaje_error.php',
+                            $mensaje = CargarVista(APP_DIR . '/views/mensaje_error.php',
                                 array(
                                     'mensaje' => 'No se puede eliminar el usuario que está en la sesión.'
                                 ));
@@ -352,7 +352,7 @@ class ControladorUsuarios
                     }
                     else
                     {
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
                                 'mensaje' => 'El usuario especificado no se encuentra en la base de datos.'
                             ));
@@ -363,7 +363,7 @@ class ControladorUsuarios
         }
         else
         {
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_usuario.php',
+            $formulario = CargarVista(APP_DIR . '/views/formulario_sel_usuario.php',
                 array(
                     'accion' => '?opcion=eliminar_usuario'
                 ));

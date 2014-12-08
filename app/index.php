@@ -9,14 +9,15 @@ session_start();
 
 
 //Ruta base
-define('BASE_DIR', __DIR__);
+define('APP_DIR', __DIR__);
+define('BASE_DIR', dirname(APP_DIR));
 
 // cargamos configuración y helpers
-require_once BASE_DIR . '/config.php';
-require_once BASE_DIR . '/helpers/carga_vista_helper.php';
-require_once BASE_DIR . '/helpers/crea_form_helper.php';
-require_once BASE_DIR . '/controllers/controlador_envios.php';
-require_once BASE_DIR . '/controllers/controlador_usuarios.php';
+require_once APP_DIR . '/config.php';
+require_once APP_DIR . '/helpers/carga_vista_helper.php';
+require_once APP_DIR . '/helpers/crea_form_helper.php';
+require_once APP_DIR . '/controllers/controlador_envios.php';
+require_once APP_DIR . '/controllers/controlador_usuarios.php';
 
 
 //Comprobamos último acceso a la aplicación y actualizamos
@@ -90,4 +91,4 @@ if(!$htmlCuerpo = $c->{$accion}())
 }
 
 
-include BASE_DIR.'/views/plantilla.php';
+include APP_DIR.'/views/plantilla.php';
