@@ -1,9 +1,9 @@
 Práctica 1ª evaluación DWEServidor
 ==================================
 
-##Aplicación para la gestión de envíos desarrollada en PHP
+##Aplicación para la gestión de envíos
 
-No se ha utilizado ningún framework.
+Desarrollada en PHP. No se ha utilizado ningún framework.
 
 Se ha utilizado [BootStrap](http://getbootstrap.com) para dar estilos a la aplicación.
 

@@ -22,13 +22,13 @@ require_once BASE_DIR . '/controllers/controlador_usuarios.php';
 //Comprobamos último acceso a la aplicación y actualizamos
 if (isset($_SESSION['ultimo_acceso']))
 {
-    if (time() - $_SESSION['ultimo_acceso'] > 4)
+    if (time() - $_SESSION['ultimo_acceso'] > $GLOBALS['tiempoSesion'])
     {
         session_unset();
-        session_destroy();   // destruimos la sesión
+        session_destroy();   // destruimos la sesión cuando expira el tiempo de conexión
     }
-    $_SESSION['ultimo_acceso'] = time(); // actualizamos el timestamp de la última actividad
 }
+$_SESSION['ultimo_acceso'] = time(); // actualizamos el timestamp de la última actividad
 
 // enrutamiento
 $map = array(

@@ -136,36 +136,6 @@ class ControladorEnvios{
         return $err;
     }
 
-
-    /**
-     * Funcion de prueba de vistas
-     */
-    public function prueba()
-    {
-        $provincias = $this->modeloProvincias->ListarProvinciasIdxCodigo();
-
-        $titulo = CargarVista(BASE_DIR.'/views/titulo.php',
-            array(
-                'tituloPagina' => 'Esto funciona'
-                ));
-
-        if($_POST){
-            $debug = CargarVista(BASE_DIR . '/views/debug.php',
-                array(
-                   'debug' => $this->Filtro($_POST)
-                ));
-            return $titulo.$debug;
-        }
-        else{
-            $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
-                array(
-                    'accion' => '?opcion=prueba',
-                    'listaProvincias' => $provincias
-                ));
-            return $titulo.$formulario;
-        }
-    }
-
     /**
      * Función inicio que se ejecuta por defecto
      * @return string
@@ -204,7 +174,7 @@ class ControladorEnvios{
         }
 
         $total = $this->modeloEnvios->NumEnvios();
-        $resultadosPorPagina = 3;
+        $resultadosPorPagina = $GLOBALS['paginacion'];
         $numeroPaginas = ceil($total/$resultadosPorPagina);
         $inicio = ($paginaActual-1) * $resultadosPorPagina;
 
