@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/formulario_acceso.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/formulario_crea_usuario.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/formulario_edita_usuario.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/formulario_sel_usuario.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/listar_usuarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/mensaje_error.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/mensaje_exito.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/menu_usuarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/modelo_usuarios.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_envios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/modelo_envios.php" afterPath="$PROJECT_DIR$/app/models/modelo_envios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/encabezado.php" afterPath="$PROJECT_DIR$/app/views/encabezado.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/estilos.css" afterPath="$PROJECT_DIR$/assets/css/estilos.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.php" afterPath="$PROJECT_DIR$/app/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/mensaje.php" afterPath="$PROJECT_DIR$/app/views/mensaje.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/menu_navegacion.php" afterPath="$PROJECT_DIR$/app/views/menu_navegacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plantilla.php" afterPath="$PROJECT_DIR$/app/views/plantilla.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DWEServidor_prac1ev.iws" />
@@ -29,44 +44,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
+      <file leaf-file-name="controlador_usuarios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8735955" vertical-offset="9079" max-vertical-offset="10410">
-              <caret line="626" column="13" selection-start-line="626" selection-start-column="13" selection-end-line="626" selection-end-column="13" />
+            <state vertical-scroll-proportion="-4.86" vertical-offset="1497" max-vertical-offset="5730">
+              <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
               <folding>
-                <element signature="e#6#28#0#PHP" expanded="true" />
+                <element signature="e#6#40#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelo_envios.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
+      <file leaf-file-name="modelo_usuarios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/modelo_usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.666667" vertical-offset="2258" max-vertical-offset="2745">
-              <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+            <state vertical-scroll-proportion="-11.833333" vertical-offset="1411" max-vertical-offset="2805">
+              <caret line="113" column="79" selection-start-line="113" selection-start-column="79" selection-end-line="113" selection-end-column="79" />
               <folding>
-                <marker date="1417985196000" expanded="true" signature="486:528" placeholder="select count..envios..." />
-                <marker date="1417985196000" expanded="true" signature="905:941" placeholder="select count..envios..." />
-                <marker date="1417985196000" expanded="true" signature="1297:1359" placeholder="select * fro..envios..." />
-                <marker date="1417985196000" expanded="true" signature="1533:1578" placeholder="select * fro..envios..." />
-                <marker date="1417985196000" expanded="true" signature="2359:2397" placeholder="insert into ..." />
-                <marker date="1417985196000" expanded="true" signature="3035:3083" placeholder="update envio..." />
-                <marker date="1417985196000" expanded="true" signature="3386:3423" placeholder="delete from ..." />
-                <marker date="1417985196000" expanded="true" signature="3805:3831" placeholder="select * fro..envios..." />
-                <marker date="1417985196000" expanded="true" signature="4208:4228" placeholder="select * fro..envios..." />
+                <element signature="e#6#37#0#PHP" expanded="true" />
+                <marker date="1418059521000" expanded="true" signature="494:538" placeholder="select count..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="915:953" placeholder="select count..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="1312:1351" placeholder="select * fro..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="1435:1457" placeholder="select * fro..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="2173:2213" placeholder="insert into ..." />
+                <marker date="1418059521000" expanded="true" signature="2859:2908" placeholder="update usuar..." />
+                <marker date="1418059521000" expanded="true" signature="2859:2922" placeholder="update usuar..." />
+                <marker date="1418059521000" expanded="true" signature="3229:3280" placeholder="delete from ..." />
+                <marker date="1418059521000" expanded="true" signature="3662:3690" placeholder="select * fro..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="4067:4089" placeholder="select * fro..usuarios..." />
+                <marker date="1418059521000" expanded="true" signature="4441:4500" placeholder="select * fro..usuarios..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.291667" vertical-offset="23" max-vertical-offset="975">
-              <caret line="18" column="83" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="83" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -81,42 +89,84 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulario_sel_con_errores.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_con_errores.php">
+      <file leaf-file-name="formulario_sel_usuario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="7" />
+            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="210">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulario_sel_envio.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_envio.php">
+      <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state vertical-scroll-proportion="-40.916668" vertical-offset="5858" max-vertical-offset="10395">
+              <caret line="456" column="48" selection-start-line="456" selection-start-column="48" selection-end-line="456" selection-end-column="48" />
+              <folding>
+                <element signature="e#6#38#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formulario_crea_usuario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/formulario_crea_usuario.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="285">
+              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulario_crea_envio.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/formulario_crea_envio.php">
+      <file leaf-file-name="formulario_edita_usuario.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/formulario_edita_usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.166666" vertical-offset="128" max-vertical-offset="735">
-              <caret line="36" column="111" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="111" />
+            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="210">
+              <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plantilla.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
+      <file leaf-file-name="estilos.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.75" vertical-offset="0" max-vertical-offset="540">
-              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.4308094" vertical-offset="0" max-vertical-offset="2460">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="encabezado.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/encabezado.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.416667" vertical-offset="83" max-vertical-offset="690">
+              <caret line="27" column="120" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="120" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5" vertical-offset="600" max-vertical-offset="1485">
+              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+              <folding>
+                <element signature="e#6#36#0#PHP" expanded="true" />
+                <marker date="1418042454000" expanded="true" signature="2242:2300" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2248:2300" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2252:2300" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2284:2300" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2708:2759" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2714:2759" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2718:2759" placeholder="..." />
+                <marker date="1418042454000" expanded="true" signature="2747:2759" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,19 +188,33 @@
         <option value="$PROJECT_DIR$/app/views/formulario_con_errores.php" />
         <option value="$PROJECT_DIR$/app/helpers/crea_form_helper.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_envio_con_errores.php" />
-        <option value="$PROJECT_DIR$/assets/css/estilos.css" />
         <option value="$PROJECT_DIR$/app/views/formulario_envio.php" />
         <option value="$PROJECT_DIR$/app/controllers/controlador.php" />
         <option value="$PROJECT_DIR$/app/views/paginador.php" />
-        <option value="$PROJECT_DIR$/app/views/menu_navegacion.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_crea_envio.php" />
-        <option value="$PROJECT_DIR$/app/views/plantilla.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_edita_envio.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_sel_con_errores.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_sel_envio.php" />
-        <option value="$PROJECT_DIR$/app/index.php" />
         <option value="$PROJECT_DIR$/app/models/modelo_envios.php" />
+        <option value="$PROJECT_DIR$/app/views/formulario_login.php" />
+        <option value="$PROJECT_DIR$/app/views/plantilla.php" />
+        <option value="$PROJECT_DIR$/app/views/lista_usuarios.php" />
+        <option value="$PROJECT_DIR$/app/views/formulario_acceso.php" />
+        <option value="$PROJECT_DIR$/app/views/formulario_sel_usuario.php" />
+        <option value="$PROJECT_DIR$/app/views/formulario_crea_usuario.php" />
+        <option value="$PROJECT_DIR$/app/views/menu_navegacion.php" />
+        <option value="$PROJECT_DIR$/app/views/menu_usuarios.php" />
+        <option value="$PROJECT_DIR$/app/views/mensaje_error.php" />
+        <option value="$PROJECT_DIR$/app/views/mensaje_exito.php" />
+        <option value="$PROJECT_DIR$/app/views/mensaje.php" />
+        <option value="$PROJECT_DIR$/app/views/listar_usuarios.php" />
+        <option value="$PROJECT_DIR$/app/views/encabezado.php" />
+        <option value="$PROJECT_DIR$/app/index.php" />
         <option value="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
+        <option value="$PROJECT_DIR$/app/views/formulario_edita_usuario.php" />
+        <option value="$PROJECT_DIR$/app/models/modelo_usuarios.php" />
+        <option value="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
+        <option value="$PROJECT_DIR$/assets/css/estilos.css" />
       </list>
     </option>
   </component>
@@ -229,6 +293,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -266,24 +348,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DWEServidor_prac1ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DWEServidor_prac1ev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,7 +437,13 @@
       <option name="project" value="LOCAL" />
       <updated>1417985175621</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Solucionado problema de búsqueda. Ahora no se tiene en cuenta el valor '00' de provincia como criterio de búsqueda.">
+      <created>1417988759924</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1417988759924</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -422,11 +492,12 @@
     <MESSAGE value="Añadido filtrado de datos de los formularios." />
     <MESSAGE value="Cambios en el paginador. Ahora incluye los enlaces a primera y última página." />
     <MESSAGE value="Se ha mejorado el parseo de ruta. Ahora el nombre de controladores y métodos es independiente de la url." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se ha mejorado el parseo de ruta. Ahora el nombre de controladores y métodos es independiente de la url." />
+    <MESSAGE value="Solucionado problema de búsqueda. Ahora no se tiene en cuenta el valor '00' de provincia como criterio de búsqueda." />
+    <option name="LAST_COMMIT_MESSAGE" value="Solucionado problema de búsqueda. Ahora no se tiene en cuenta el valor '00' de provincia como criterio de búsqueda." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -458,16 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29952458" vertical-offset="36" max-vertical-offset="2400">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding>
-            <marker date="1417964840000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/formulario_envio_con_errores.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6904762" vertical-offset="0" max-vertical-offset="735">
@@ -494,34 +555,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/menu_navegacion.php">
+    <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0378913" vertical-offset="0" max-vertical-offset="840">
-          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
-          <folding />
+        <state vertical-scroll-proportion="-15.625" vertical-offset="0" max-vertical-offset="2775">
+          <caret line="25" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="179" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#35#0#PHP" expanded="true" />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select count..envios..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="update envio..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+            <marker date="1417985196000" expanded="true" signature="-1:-1" placeholder="select * fro..envios..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_envio.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.75" vertical-offset="0" max-vertical-offset="540">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/formulario_crea_envio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.166666" vertical-offset="128" max-vertical-offset="735">
-          <caret line="36" column="111" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="111" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/formulario_edita_envio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.791666" vertical-offset="188" max-vertical-offset="795">
-          <caret line="41" column="111" selection-start-line="41" selection-start-column="111" selection-end-line="41" selection-end-column="111" />
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -534,47 +590,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_envio.php">
+    <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="555">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_crea_envio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.041666" vertical-offset="68" max-vertical-offset="735">
+          <caret line="43" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_acceso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="285">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/modelo_provincias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="51.583332" vertical-offset="1238" max-vertical-offset="1845">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select * fro..provincias..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/menu_navegacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="870">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/menu_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="585">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/mensaje_error.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/mensaje_exito.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/mensaje.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/listar_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="390">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/encabezado.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.416667" vertical-offset="83" max-vertical-offset="690">
+          <caret line="27" column="120" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_sel_usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="210">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_crea_usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="285">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.291667" vertical-offset="23" max-vertical-offset="975">
-          <caret line="18" column="83" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="83" />
+        <state vertical-scroll-proportion="-7.5" vertical-offset="600" max-vertical-offset="1485">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+          <folding>
+            <element signature="e#6#36#0#PHP" expanded="true" />
+            <marker date="1418042454000" expanded="true" signature="2242:2300" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2248:2300" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2252:2300" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2284:2300" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2708:2759" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2714:2759" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2718:2759" placeholder="..." />
+            <marker date="1418042454000" expanded="true" signature="2747:2759" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_edita_envio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.791666" vertical-offset="188" max-vertical-offset="795">
+          <caret line="41" column="111" selection-start-line="41" selection-start-column="111" selection-end-line="41" selection-end-column="111" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/modelo_envios.php">
+    <entry file="file://$PROJECT_DIR$/app/views/formulario_edita_usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.666667" vertical-offset="2258" max-vertical-offset="2745">
-          <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="210">
+          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/modelo_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.833333" vertical-offset="1411" max-vertical-offset="2805">
+          <caret line="113" column="79" selection-start-line="113" selection-start-column="79" selection-end-line="113" selection-end-column="79" />
           <folding>
-            <marker date="1417985196000" expanded="true" signature="486:528" placeholder="select count..envios..." />
-            <marker date="1417985196000" expanded="true" signature="905:941" placeholder="select count..envios..." />
-            <marker date="1417985196000" expanded="true" signature="1297:1359" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="1533:1578" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="2359:2397" placeholder="insert into ..." />
-            <marker date="1417985196000" expanded="true" signature="3035:3083" placeholder="update envio..." />
-            <marker date="1417985196000" expanded="true" signature="3386:3423" placeholder="delete from ..." />
-            <marker date="1417985196000" expanded="true" signature="3805:3831" placeholder="select * fro..envios..." />
-            <marker date="1417985196000" expanded="true" signature="4208:4228" placeholder="select * fro..envios..." />
+            <element signature="e#6#37#0#PHP" expanded="true" />
+            <marker date="1418059521000" expanded="true" signature="494:538" placeholder="select count..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="915:953" placeholder="select count..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="1312:1351" placeholder="select * fro..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="1435:1457" placeholder="select * fro..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="2173:2213" placeholder="insert into ..." />
+            <marker date="1418059521000" expanded="true" signature="2859:2908" placeholder="update usuar..." />
+            <marker date="1418059521000" expanded="true" signature="2859:2922" placeholder="update usuar..." />
+            <marker date="1418059521000" expanded="true" signature="3229:3280" placeholder="delete from ..." />
+            <marker date="1418059521000" expanded="true" signature="3662:3690" placeholder="select * fro..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="4067:4089" placeholder="select * fro..usuarios..." />
+            <marker date="1418059521000" expanded="true" signature="4441:4500" placeholder="select * fro..usuarios..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8735955" vertical-offset="9079" max-vertical-offset="10410">
-          <caret line="626" column="13" selection-start-line="626" selection-start-column="13" selection-end-line="626" selection-end-column="13" />
+        <state vertical-scroll-proportion="-40.916668" vertical-offset="5858" max-vertical-offset="10395">
+          <caret line="456" column="48" selection-start-line="456" selection-start-column="48" selection-end-line="456" selection-end-column="48" />
           <folding>
-            <element signature="e#6#28#0#PHP" expanded="true" />
+            <element signature="e#6#38#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.86" vertical-offset="1497" max-vertical-offset="5730">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+          <folding>
+            <element signature="e#6#40#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4308094" vertical-offset="0" max-vertical-offset="2460">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

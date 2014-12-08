@@ -14,40 +14,28 @@
             </a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-            <!--
-            <ul class="nav navbar-nav">
-                <li class="snippets_index snippets_view snippets_search">
-                    <a href="http://www.bootdey.com/snippets">
-                        <span class="glyphicon glyphicon-th"></span>
-                        Snippets
-                    </a>
-                </li>
-                <li class="utilities_index utilities_view utilities_search">
-                    <a href="http://www.bootdey.com/utilities">
-                        <span class="glyphicon glyphicon-th-large"></span>
-                        Utilities
-                    </a>
-                </li>
-            </ul>
-            -->
             <ul class="nav navbar-nav navbar-right">
-                <li class="users_login">
-                    <a href="http://www.bootdey.com/sign-in">
-                        <i class="glyphicon glyphicon-user"></i>
-                        Login
+                <?php if(!isset($_SESSION['usuario'])):?>
+                <li>
+                    <a href="?opcion=acceder">
+                        <i class="glyphicon glyphicon-log-in"></i>
+                        Acceder
                     </a>
                 </li>
-                <li class="users_add">
-                    <a href="http://www.bootdey.com/sign-up">
-                        <i class="glyphicon glyphicon-plus-sign"></i>
-                        Register
+                <?php else :?>
+                <li>
+                    <span class="navbar-text">
+                        <strong><?=$_SESSION['usuario']?></strong>, hora de conexión: <?=date('G:i:s', $_SESSION['hora'])?>
+                    </span>
+                </li>
+                <li>
+                    <a href="?opcion=salir">
+                        <i class="glyphicon glyphicon-log-out"></i>
+                        Salir
                     </a>
                 </li>
+                <?php endif;?>
             </ul>
         </nav>
     </div>
 </header>
-<!-- BREADCRUMBS-->
-
-
-

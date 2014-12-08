@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+    <?=CargarVista(BASE_DIR.'/views/menu_usuarios.php');?>
 </div>
 <?=CargarVista(BASE_DIR.'/views/pie.php'); ?>
 

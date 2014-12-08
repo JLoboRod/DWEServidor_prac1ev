@@ -50,6 +50,10 @@
     margin: 0 auto -50px;
 }
 
+.mensaje{
+    margin-top: 1em;
+}
+
 .pie{
     border-top:3px solid #eee;
     min-height: 50px;

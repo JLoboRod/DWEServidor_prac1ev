@@ -1,6 +1,6 @@
 <?php
 /**
- * CONTROLADOR
+ * CONTROLADOR DE ENVÍOS
  */
 
 include_once BASE_DIR . '/models/modelo_envios.php';
@@ -455,7 +455,6 @@ class ControladorEnvios{
             $formulario = CargarVista(BASE_DIR . '/views/formulario_sel_envio.php',
                 array(
                     'accion' => '?opcion=editar'
-
                 ));
 
             return $titulo.$formulario;
