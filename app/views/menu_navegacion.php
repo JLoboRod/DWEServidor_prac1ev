@@ -12,7 +12,7 @@
             </li>
             <li>
                 <a href="?opcion=listar">
-                    <span class="glyphicon glyphicon-list-alt azul"></span>
+                    <span class="glyphicon glyphicon-list-alt"></span>
                     Listar envíos
                 </a>
             </li>
@@ -24,7 +24,7 @@
             </li>
             <li>
                 <a href="?opcion=editar">
-                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="glyphicon glyphicon-edit"></span>
                     Editar envío
                 </a>
             </li>
@@ -36,7 +36,7 @@
             </li>
             <li>
                 <a href="?opcion=anotar_recepcion">
-                    <span class="glyphicon glyphicon-book"></span>
+                    <span class="glyphicon glyphicon-check"></span>
                     Anotar recepción
                 </a>
             </li>

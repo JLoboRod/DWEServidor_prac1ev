@@ -1,9 +1,10 @@
-Práctica Desarrollo Web en Entorno de Servidor (1ª evaluación)
-==============================================================
+Práctica 1ª evaluación DWEServidor
+==================================
 
 ##Aplicación para la gestión de envíos desarrollada en PHP
 
 No se ha utilizado ningún framework.
 
-La documentación ha sido generada con [ApiGen](https://github.com/apigen/apigen).
+Se ha utilizado [BootStrap](http://getbootstrap.com) para dar estilos a la aplicación.
 
+La documentación ha sido generada con [ApiGen](https://github.com/apigen/apigen).

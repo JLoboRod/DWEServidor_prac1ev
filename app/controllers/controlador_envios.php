@@ -8,8 +8,6 @@ include_once BASE_DIR . '/models/modelo_provincias.php';
 
 class ControladorEnvios{
 
-    //TODO: Filtrar la información que llega de los formularios
-
     private $modeloEnvios;
     private $modeloProvincias;
 
@@ -55,10 +53,6 @@ class ControladorEnvios{
                 if(!preg_match($patron, $datos['destinatario']))
                 {
                     $err['destinatario'] = 'El destinatario no puede contener números o signos de puntuación.';
-                }
-                else //TODO: Esto lo colocamos para prevenir que se creen envíos
-                {
-                    $err['destinatario'] = $_POST['destinatario'];
                 }
             }
         }
@@ -302,9 +296,6 @@ class ControladorEnvios{
 
         if($_POST)
         {
-            /**
-             * FILTRADO --> TODO: Falta filtrar la informaciónen crear. En principio suponemos que no hay problemas
-             */
             $errores = $this->Filtro($_POST);
 
         }
@@ -344,7 +335,7 @@ class ControladorEnvios{
             //Añadimos la fecha de creación: Se debe crear automáticamente sin que el usuario la introduzca
             $_POST['fecha_crea'] = date('Y-m-d');
             $consulta = $this->modeloEnvios->CrearEnvio($_POST);
-            $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+            $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
                 array(
                     'mensaje' => 'Envío creado correctamente'
                 ));
@@ -427,7 +418,7 @@ class ControladorEnvios{
                         $claseCampoForm[$campo] = ($error === '')? '':'has-error';
                     }
 
-                    $formulario = CargarVista(BASE_DIR . '/views/formulario_crea  _envio.php',
+                    $formulario = CargarVista(BASE_DIR . '/views/formulario_crea_envio.php',
                         array(
                             'accion' => '?opcion=editar',
                             'listaProvincias' => $provincias,
@@ -439,7 +430,7 @@ class ControladorEnvios{
                 else
                 {
                     $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
-                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                    $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
                         array(
                             'mensaje' => 'Envío modificado correctamente.'
                         ));
@@ -501,7 +492,7 @@ class ControladorEnvios{
                     if ($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
 
                         $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
                             array(
                                 'mensaje' => 'Envío eliminado correctamente.'
                             ));
@@ -542,9 +533,7 @@ class ControladorEnvios{
             $errores = $this->Filtro($_POST);
 
             if(count($_POST)===1 && isset($_POST['cod_envio'])) {
-                /**
-                 * FILTRADO --> TODO: Falta filtrar la el cod_envio (Si no está vacío y si existe en la base de datos). En principio suponemos que no hay problemas
-                 */
+
                 if ($errores) {
                     $claseCampoForm = [];
 
@@ -569,7 +558,7 @@ class ControladorEnvios{
                                 'fecha_ent' => date('Y-m-d')
                             ));
 
-                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje.php',
+                        $mensaje = CargarVista(BASE_DIR . '/views/mensaje_exito.php',
                             array(
                                 'mensaje' => 'Recepción anotada correctamente.'
                             ));

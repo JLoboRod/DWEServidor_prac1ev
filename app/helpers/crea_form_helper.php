@@ -1,7 +1,8 @@
 <?php
 
 /**
- *
+ * Devuelve el valor Post especificado por $nombreCampo
+ * Si este no existe, devuelve $valorPorDefecto
  * @param string $nombreCampo
  * @param string $valorPorDefecto
  * @return string
@@ -15,7 +16,8 @@ function ValorPost($nombreCampo, $valorPorDefecto='')
 }
 
 /**
- *
+ * Devuelve el valor Post especificado por $nombreCampo
+ * Si este no existe, devuelve un array $valorPorDefecto
  * @param string $nombreCampo
  * @param string $valorPorDefecto
  * @return string
@@ -29,7 +31,8 @@ function ValoresPost($nombreCampo, $valorPorDefecto=array())
 }
 
 /**
- *
+ * Devuelve el valor Get especificado por $nombreCampo
+ * Si este no existe, devuelve $valorPorDefecto
  * @param string $nombreCampo
  * @param string $valorPorDefecto
  * @return string
@@ -43,7 +46,8 @@ function ValorGet($nombreCampo, $valorPorDefecto='')
 }
 
 /**
- * Muestra $error
+ * Devuelve $error si existe y si no devuelve una
+ * cadena vacía
  * @param $error
  * @return string
  */
@@ -60,7 +64,8 @@ function VerError($error)
 }
 
 /**
- *
+ * Genera un control de tipo select con las opciones
+ * pasadas como parámetros
  * @param string $name Nombre del campo
  * @param array $opciones Opciones que tiene el select
  * 			clave array=valor option
@@ -147,6 +152,12 @@ function CreaInputText($name, $valorPorDefecto)
     $html .= '<br/>';
 }
 
+/**
+ * Genera los controles de un formulario según los datos
+ * pasados como parámetros en $datos
+ * @param $datos
+ * @return string
+ */
 function CreaControlesFormulario($datos)
 {
     $html = '';

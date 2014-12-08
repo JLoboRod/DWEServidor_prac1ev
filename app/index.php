@@ -19,7 +19,7 @@ require_once BASE_DIR . '/controllers/controlador_envios.php';
 require_once BASE_DIR . '/controllers/controlador_usuarios.php';
 
 
-//Comprobamos último acceso a la aplicación
+//Comprobamos último acceso a la aplicación y actualizamos
 if (isset($_SESSION['ultimo_acceso']))
 {
     if (time() - $_SESSION['ultimo_acceso'] > 4)
@@ -28,7 +28,6 @@ if (isset($_SESSION['ultimo_acceso']))
         session_destroy();   // destruimos la sesión
     }
     $_SESSION['ultimo_acceso'] = time(); // actualizamos el timestamp de la última actividad
-
 }
 
 // enrutamiento
