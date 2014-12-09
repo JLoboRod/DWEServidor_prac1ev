@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class ModeloEnvios | DWEServidor_prac1ev documentacion</title>
+	<title>Class ControladorEnvios | DWEServidor_prac1ev documentacion</title>
 
 	<link rel="stylesheet" href="resources/style.css?331665766">
 
@@ -23,10 +23,10 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-ControladorEnvios.html">ControladorEnvios</a></li>
+				<li class="active"><a href="class-ControladorEnvios.html">ControladorEnvios</a></li>
 				<li><a href="class-ControladorUsuarios.html">ControladorUsuarios</a></li>
 				<li><a href="class-Db.html">Db</a></li>
-				<li class="active"><a href="class-ModeloEnvios.html">ModeloEnvios</a></li>
+				<li><a href="class-ModeloEnvios.html">ModeloEnvios</a></li>
 				<li><a href="class-ModeloProvincias.html">ModeloProvincias</a></li>
 				<li><a href="class-ModeloUsuarios.html">ModeloUsuarios</a></li>
 			</ul>
@@ -84,7 +84,7 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class ModeloEnvios</h1>
+	<h1>Class ControladorEnvios</h1>
 
 
 	<div class="description">
@@ -106,7 +106,7 @@
 		
 		
 
-		<b>Located at</b> <a href="source-class-ModeloEnvios.html#9-180" title="Go to source code">app/models/modelo_envios.php</a><br>
+		<b>Located at</b> <a href="source-class-ControladorEnvios.html#9-675" title="Go to source code">app/controllers/controlador_envios.php</a><br>
 	</div>
 
 
@@ -125,7 +125,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ModeloEnvios.html#13-16" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-ControladorEnvios.html#15-18" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
 			
@@ -145,34 +145,34 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="NumEnvios" id="_NumEnvios">
+	<tr data-order="Inicio" id="_Inicio">
 
 		<td class="attributes"><code>
 			 public 
 
-			integer
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_NumEnvios">#</a>
-		<code><a href="source-class-ModeloEnvios.html#18-45" title="Go to source code">NumEnvios</a>( <span>mixed <var>$condiciones</var> = <span class="php-keyword1">NULL</span></span> )</code>
+		<a class="anchor" href="#_Inicio">#</a>
+		<code><a href="source-class-ControladorEnvios.html#141-154" title="Go to source code">Inicio</a>( )</code>
 
 		<div class="description short">
-			<p>Devuelve el número de envíos que cumplen $condiciones</p>
+			<p>Función inicio que se ejecuta por defecto</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Devuelve el número de envíos que cumplen $condiciones</p>
+			<p>Función inicio que se ejecuta por defecto</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>integer</code>
+					<code>string</code>
 				</div>
 
 
@@ -186,29 +186,29 @@
 		<td class="attributes"><code>
 			 public 
 
-			array
-			&amp;
+			string
+			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_ListarEnvios">#</a>
-		<code><a href="source-class-ModeloEnvios.html#47-69" title="Go to source code">ListarEnvios</a>( <span>mixed <var>$inic</var> = <span class="php-quote">''</span></span>, <span>mixed <var>$porPag</var> = <span class="php-quote">''</span></span> )</code>
+		<code><a href="source-class-ControladorEnvios.html#156-258" title="Go to source code">ListarEnvios</a>( )</code>
 
 		<div class="description short">
-			<p>Devuelve la lista de envíos</p>
+			<p>Functión que trata el evento de listar envíos</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Devuelve la lista de envíos</p>
+			<p>Functión que trata el evento de listar envíos</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code>
+					<code>string</code>
 				</div>
 
 
@@ -222,32 +222,30 @@
 		<td class="attributes"><code>
 			 public 
 
-			
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_CrearEnvio">#</a>
-		<code><a href="source-class-ModeloEnvios.html#71-99" title="Go to source code">CrearEnvio</a>( <span>array <var>$datos</var></span> )</code>
+		<code><a href="source-class-ControladorEnvios.html#260-319" title="Go to source code">CrearEnvio</a>( )</code>
 
 		<div class="description short">
-			<p>Inserta nuevo envío con $datos</p>
+			<p>Función que trata el evento de crear envío</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Inserta nuevo envío con $datos</p>
+			<p>Función que trata el evento de crear envío</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$datos</var></dt>
-					<dd>
-</dd>
-				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
 
 
 
@@ -260,35 +258,30 @@
 		<td class="attributes"><code>
 			 public 
 
-			
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EditarEnvio">#</a>
-		<code><a href="source-class-ModeloEnvios.html#102-127" title="Go to source code">EditarEnvio</a>( <span>integer <var>$id</var></span>, <span>array <var>$datos</var></span> )</code>
+		<code><a href="source-class-ControladorEnvios.html#321-430" title="Go to source code">EditarEnvio</a>( )</code>
 
 		<div class="description short">
-			<p>Edita los datos del envío $id</p>
+			<p>Función que trata el evento de editar envío</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Edita los datos del envío $id</p>
+			<p>Función que trata el evento de editar envío</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$id</var></dt>
-					<dd>
-</dd>
-					<dt><var>$datos</var></dt>
-					<dd>
-</dd>
-				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
 
 
 
@@ -301,32 +294,66 @@
 		<td class="attributes"><code>
 			 public 
 
-			
+			string
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_EliminarEnvio">#</a>
-		<code><a href="source-class-ModeloEnvios.html#129-142" title="Go to source code">EliminarEnvio</a>( <span>integer <var>$id</var></span> )</code>
+		<code><a href="source-class-ControladorEnvios.html#432-514" title="Go to source code">EliminarEnvio</a>( )</code>
 
 		<div class="description short">
-			<p>Elimina el envío $id</p>
+			<p>Función que trata el evento de eliminar envío</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Elimina el envío $id</p>
+			<p>Función que trata el evento de eliminar envío</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$id</var></dt>
-					<dd>
-</dd>
-				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="AnotarRecepcion" id="_AnotarRecepcion">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_AnotarRecepcion">#</a>
+		<code><a href="source-class-ControladorEnvios.html#516-580" title="Go to source code">AnotarRecepcion</a>( )</code>
+
+		<div class="description short">
+			<p>Función que trata el evento de anotar recepción de un envío</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Función que trata el evento de anotar recepción de un envío</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
 
 
 
@@ -339,32 +366,30 @@
 		<td class="attributes"><code>
 			 public 
 
+			string
 			
-			&amp;
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_BuscarEnvios">#</a>
-		<code><a href="source-class-ModeloEnvios.html#144-179" title="Go to source code">BuscarEnvios</a>( <span>array <var>$condiciones</var></span> )</code>
+		<code><a href="source-class-ControladorEnvios.html#582-674" title="Go to source code">BuscarEnvios</a>( )</code>
 
 		<div class="description short">
-			<p>Devuelve los envíos que cumplen $opciones de búsqueda</p>
+			<p>Función que trata el evento de buscar envío</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Devuelve los envíos que cumplen $opciones de búsqueda</p>
+			<p>Función que trata el evento de buscar envío</p>
 
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$condiciones</var></dt>
-					<dd>
-</dd>
-				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code>
+				</div>
 
 
 

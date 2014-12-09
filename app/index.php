@@ -51,7 +51,6 @@ $map = array(
 );
 
 
-
 // Parseo de la ruta
 if (isset($_GET['opcion']) && isset($_SESSION['usuario']))
 {

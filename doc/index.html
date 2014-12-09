@@ -22,10 +22,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-controlador.html">controlador</a></li>
+				<li><a href="class-ControladorEnvios.html">ControladorEnvios</a></li>
+				<li><a href="class-ControladorUsuarios.html">ControladorUsuarios</a></li>
 				<li><a href="class-Db.html">Db</a></li>
 				<li><a href="class-ModeloEnvios.html">ModeloEnvios</a></li>
 				<li><a href="class-ModeloProvincias.html">ModeloProvincias</a></li>
+				<li><a href="class-ModeloUsuarios.html">ModeloUsuarios</a></li>
 			</ul>
 
 
@@ -40,9 +42,11 @@
 				<li><a href="function-CreaInputText.html">CreaInputText</a></li>
 				<li><a href="function-CreaRadioButton.html">CreaRadioButton</a></li>
 				<li><a href="function-CreaSelect.html">CreaSelect</a></li>
+				<li><a href="function-GetConfigValue.html">GetConfigValue</a></li>
 				<li><a href="function-ValoresPost.html">ValoresPost</a></li>
 				<li><a href="function-ValorGet.html">ValorGet</a></li>
 				<li><a href="function-ValorPost.html">ValorPost</a></li>
+				<li><a href="function-VerError.html">VerError</a></li>
 			</ul>
 		</div>
 	</div>
@@ -87,7 +91,12 @@
 <table class="summary" id="classes">
 <caption>Classes summary</caption>
 <tr>
-	<td class="name"><a href="class-controlador.html">controlador</a></td>
+	<td class="name"><a href="class-ControladorEnvios.html">ControladorEnvios</a></td>
+	<td>
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ControladorUsuarios.html">ControladorUsuarios</a></td>
 	<td>
 </td>
 </tr>
@@ -103,6 +112,11 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-ModeloProvincias.html">ModeloProvincias</a></td>
+	<td>
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ModeloUsuarios.html">ModeloUsuarios</a></td>
 	<td>
 </td>
 </tr>
@@ -128,7 +142,8 @@ variables que incluye el array $datosVista</p>
 </tr>
 <tr>
 	<td class="name"><a href="function-CreaControlesFormulario.html">CreaControlesFormulario</a></td>
-	<td>
+	<td><p>Genera los controles de un formulario según los datos
+pasados como parámetros en $datos</p>
 </td>
 </tr>
 <tr>
@@ -143,22 +158,38 @@ variables que incluye el array $datosVista</p>
 </tr>
 <tr>
 	<td class="name"><a href="function-CreaSelect.html">CreaSelect</a></td>
-	<td>
+	<td><p>Genera un control de tipo select con las opciones
+pasadas como parámetros</p>
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="function-GetConfigValue.html">GetConfigValue</a></td>
+	<td><p>Función que devuelve el parámetro de configuración
+especificado en $name</p>
 </td>
 </tr>
 <tr>
 	<td class="name"><a href="function-ValoresPost.html">ValoresPost</a></td>
-	<td>
+	<td><p>Devuelve el valor Post especificado por $nombreCampo
+Si este no existe, devuelve un array $valorPorDefecto</p>
 </td>
 </tr>
 <tr>
 	<td class="name"><a href="function-ValorGet.html">ValorGet</a></td>
-	<td>
+	<td><p>Devuelve el valor Get especificado por $nombreCampo
+Si este no existe, devuelve $valorPorDefecto</p>
 </td>
 </tr>
 <tr>
 	<td class="name"><a href="function-ValorPost.html">ValorPost</a></td>
-	<td>
+	<td><p>Devuelve el valor Post especificado por $nombreCampo
+Si este no existe, devuelve $valorPorDefecto</p>
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="function-VerError.html">VerError</a></td>
+	<td><p>Devuelve $error si existe y si no devuelve una
+cadena vacía</p>
 </td>
 </tr>
 </table>

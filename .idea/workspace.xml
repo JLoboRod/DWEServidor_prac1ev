@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/configuracion_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_envios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-ControladorUsuarios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/class-ModeloUsuarios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-ControladorEnvios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-ControladorUsuarios.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/source-class-ModeloUsuarios.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/source-class-controlador.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/doc/class-controlador.html" afterPath="$PROJECT_DIR$/doc/class-ControladorEnvios.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/404.html" afterPath="$PROJECT_DIR$/doc/404.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/class-Db.html" afterPath="$PROJECT_DIR$/doc/class-Db.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/class-ModeloEnvios.html" afterPath="$PROJECT_DIR$/doc/class-ModeloEnvios.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/class-ModeloProvincias.html" afterPath="$PROJECT_DIR$/doc/class-ModeloProvincias.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/elementlist.js" afterPath="$PROJECT_DIR$/doc/elementlist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.php" afterPath="$PROJECT_DIR$/app/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/source-class-Db.html" afterPath="$PROJECT_DIR$/doc/source-class-Db.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/source-class-ModeloEnvios.html" afterPath="$PROJECT_DIR$/doc/source-class-ModeloEnvios.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/source-class-ModeloProvincias.html" afterPath="$PROJECT_DIR$/doc/source-class-ModeloProvincias.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/todo.html" afterPath="$PROJECT_DIR$/doc/todo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/tree.html" afterPath="$PROJECT_DIR$/doc/tree.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DWEServidor_prac1ev.iws" />
@@ -31,11 +47,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3524804" vertical-offset="0" max-vertical-offset="1515">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-22.5" vertical-offset="240" max-vertical-offset="1500">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="e#6#36#0#PHP" expanded="true" />
               </folding>
@@ -46,7 +62,7 @@
       <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.16" vertical-offset="2507" max-vertical-offset="10200">
+            <state vertical-scroll-proportion="69.64" vertical-offset="6197" max-vertical-offset="10200">
               <caret line="181" column="59" selection-start-line="181" selection-start-column="59" selection-end-line="181" selection-end-column="59" />
               <folding>
                 <element signature="e#6#38#0#PHP" expanded="true" />
@@ -109,16 +125,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulario_edita_usuario.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/formulario_edita_usuario.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="210">
-              <caret line="8" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="confirmar_eliminar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/confirmar_eliminar.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -132,12 +138,25 @@
       <file leaf-file-name="config_params.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config_params.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875" vertical-offset="165" max-vertical-offset="1050">
+            <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="1050">
               <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
                 <element signature="e#6#61#0#PHP" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7161804" vertical-offset="0" max-vertical-offset="465">
+              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -178,7 +197,6 @@
         <option value="$PROJECT_DIR$/app/models/modelo_usuarios.php" />
         <option value="$PROJECT_DIR$/app/helpers/crea_form_helper.php" />
         <option value="$PROJECT_DIR$/app/views/menu_navegacion.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/views/plantilla.php" />
         <option value="$PROJECT_DIR$/app/config.php" />
         <option value="$PROJECT_DIR$/app/config_params.php" />
@@ -190,6 +208,7 @@
         <option value="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
         <option value="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
         <option value="$PROJECT_DIR$/app/index.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -253,7 +272,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,7 +421,13 @@
       <option name="project" value="LOCAL" />
       <updated>1418162543341</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Mejorada la configuración de parámetros.&#10;Se ha añadido un helper para acceder a los parámetros de configuración para así abstraernos en las clases de la forma de acceso a los mismos.">
+      <created>1418164004865</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1418164004865</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -445,7 +484,8 @@
     <MESSAGE value="Añadida parametrización de mensajes de la aplicación.&#10;Se ha renombrado config.php a config_db.php y sólo contiene los datos de configuración relativos a la base de datos.&#10;Se ha creado config_params.php con parámetros configurables como la paginación y el tiempo de sesión, además de los mensajes." />
     <MESSAGE value="Añadida confirmación de eliminación en el servidor, tanto de envíos como de usuarios." />
     <MESSAGE value="Añadida portada." />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadida portada." />
+    <MESSAGE value="Mejorada la configuración de parámetros.&#10;Se ha añadido un helper para acceder a los parámetros de configuración para así abstraernos en las clases de la forma de acceso a los mismos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejorada la configuración de parámetros.&#10;Se ha añadido un helper para acceder a los parámetros de configuración para así abstraernos en las clases de la forma de acceso a los mismos." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -692,16 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19946809" vertical-offset="0" max-vertical-offset="376">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/install/bd.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3000">
@@ -778,32 +808,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config_params.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="165" max-vertical-offset="1050">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <element signature="e#6#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/configuracion_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="330">
           <caret line="13" column="24" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="24" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.16" vertical-offset="2507" max-vertical-offset="10200">
-          <caret line="181" column="59" selection-start-line="181" selection-start-column="59" selection-end-line="181" selection-end-column="59" />
-          <folding>
-            <element signature="e#6#38#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -826,14 +836,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="69.64" vertical-offset="6197" max-vertical-offset="10200">
+          <caret line="181" column="59" selection-start-line="181" selection-start-column="59" selection-end-line="181" selection-end-column="59" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3524804" vertical-offset="0" max-vertical-offset="1515">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="-22.5" vertical-offset="240" max-vertical-offset="1500">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="e#6#36#0#PHP" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config_params.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="1050">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#6#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7161804" vertical-offset="0" max-vertical-offset="465">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>
