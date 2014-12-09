@@ -17,6 +17,7 @@ require_once APP_DIR . '/config_db.php';
 require_once APP_DIR . '/config_params.php';
 require_once APP_DIR . '/helpers/carga_vista_helper.php';
 require_once APP_DIR . '/helpers/crea_form_helper.php';
+require_once APP_DIR . '/helpers/configuracion_helper.php';
 require_once APP_DIR . '/controllers/controlador_envios.php';
 require_once APP_DIR . '/controllers/controlador_usuarios.php';
 
@@ -24,7 +25,7 @@ require_once APP_DIR . '/controllers/controlador_usuarios.php';
 //Comprobamos último acceso a la aplicación y actualizamos
 if (isset($_SESSION['ultimo_acceso']))
 {
-    if (time() - $_SESSION['ultimo_acceso'] > $GLOBALS['tiempoSesion'])
+    if (time() - $_SESSION['ultimo_acceso'] > GetConfigValue('tiempoSesion'))
     {
         session_unset();
         session_destroy();   // destruimos la sesión cuando expira el tiempo de conexión

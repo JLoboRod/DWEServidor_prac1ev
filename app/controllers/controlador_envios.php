@@ -25,7 +25,7 @@ class ControladorEnvios{
      */
     private function Filtro($datos=array())
     {
-        $msj = $GLOBALS['msjFiltroEnvios'];
+        $msj = GetConfigValue('msjFiltroEnvios');
         $err = array();
 
         if(isset($datos['cod_envio']))
@@ -159,7 +159,7 @@ class ControladorEnvios{
      */
     public function ListarEnvios()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
                 array(
                     'tituloPagina' => 'Listar envíos'
@@ -178,7 +178,7 @@ class ControladorEnvios{
         }
 
         $total = $this->modeloEnvios->NumEnvios();
-        $resultadosPorPagina = $GLOBALS['paginacion'];
+        $resultadosPorPagina = GetConfigValue('paginacion');
         $numeroPaginas = ceil($total/$resultadosPorPagina);
         $inicio = ($paginaActual-1) * $resultadosPorPagina;
 
@@ -263,7 +263,7 @@ class ControladorEnvios{
      */
     public function CrearEnvio()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear nuevo envío'
@@ -324,7 +324,7 @@ class ControladorEnvios{
      */
     public function EditarEnvio()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar envío'
@@ -435,7 +435,7 @@ class ControladorEnvios{
      */
     public function EliminarEnvio()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
@@ -519,7 +519,7 @@ class ControladorEnvios{
      */
     public function AnotarRecepcion()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
@@ -585,7 +585,7 @@ class ControladorEnvios{
      */
     public function BuscarEnvios()
     {
-        $msj = $GLOBALS['msjControladorEnvios'];
+        $msj = GetConfigValue('msjControladorEnvios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Buscar envíos'

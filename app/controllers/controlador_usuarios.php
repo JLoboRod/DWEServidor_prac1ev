@@ -24,7 +24,7 @@ class ControladorUsuarios
      */
     private function Filtro($datos=array())
     {
-        $msj = $GLOBALS['msjFiltroUsuarios'];
+        $msj = GetConfigValue('msjFiltroUsuarios');
         $err = array();
 
         if(isset($datos['usuario']))
@@ -66,7 +66,7 @@ class ControladorUsuarios
      */
     public function Acceder()
     {
-        $msj = $GLOBALS['msjControladorUsuarios'];
+        $msj = GetConfigValue('msjControladorUsuarios');
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Acceder'
@@ -125,7 +125,7 @@ class ControladorUsuarios
      */
     public function ListarUsuarios()
     {
-        $msj = $GLOBALS['msjControladorUsuarios'];
+        $msj = GetConfigValue('msjControladorUsuarios');
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Usuarios registrados'
@@ -158,7 +158,7 @@ class ControladorUsuarios
      */
     public function CrearUsuario()
     {
-        $msj = $GLOBALS['msjControladorUsuarios'];
+        $msj = GetConfigValue('msjControladorUsuarios');
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear usuario'
@@ -213,7 +213,7 @@ class ControladorUsuarios
      */
     public function EditarUsuario()
     {
-        $msj = $GLOBALS['msjControladorUsuarios'];
+        $msj = GetConfigValue('msjControladorUsuarios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar usuario'
@@ -319,7 +319,7 @@ class ControladorUsuarios
      */
     function EliminarUsuario()
     {
-        $msj = $GLOBALS['msjControladorUsuarios'];
+        $msj = GetConfigValue('msjControladorUsuarios');
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
