@@ -8,12 +8,13 @@ session_name('app');
 session_start();
 
 
-//Ruta base
+//Rutas base
 define('APP_DIR', __DIR__);
 define('BASE_DIR', dirname(APP_DIR));
 
-// cargamos configuración y helpers
-require_once APP_DIR . '/config.php';
+// cargamos archivos de configuración, helpers y controladores
+require_once APP_DIR . '/config_db.php';
+require_once APP_DIR . '/config_params.php';
 require_once APP_DIR . '/helpers/carga_vista_helper.php';
 require_once APP_DIR . '/helpers/crea_form_helper.php';
 require_once APP_DIR . '/controllers/controlador_envios.php';
@@ -31,7 +32,7 @@ if (isset($_SESSION['ultimo_acceso']))
 }
 $_SESSION['ultimo_acceso'] = time(); // actualizamos el timestamp de la última actividad
 
-// enrutamiento
+//Mapa de enrutamiento
 $map = array(
     'inicio' => array('controlador' =>'ControladorEnvios', 'accion' =>'Inicio'),
     'listar' => array('controlador' =>'ControladorEnvios', 'accion' =>'ListarEnvios'),

@@ -8,12 +8,14 @@ include_once APP_DIR . '/models/modelo_usuarios.php';
 class ControladorUsuarios
 {
     private $modeloUsuarios;
-    //TODO: Falta definir los roles con sus respectivas acciones permitidas
+
+    //TODO: Mejora futura: definir los roles con sus respectivas acciones permitidas
 
     function __construct()
     {
         $this->modeloUsuarios = new ModeloUsuarios();
     }
+
 
     /**
      * Filtra los datos $datos y devuelve un array con los
@@ -23,20 +25,21 @@ class ControladorUsuarios
      */
     private function Filtro($datos=array())
     {
+        $msj = $GLOBALS['msjFiltroUsuarios'];
         $err = array();
 
         if(isset($datos['usuario']))
         {
             if(empty($datos['usuario']))
             {
-                $err['usuario'] = 'Debe especificar un usuario.';
+                $err['usuario'] = $msj['usuario_no_especificado'];
             }
             else
             {
                 $patron = "/^[a-zA-Z_]{1,25}$/"; //No se aceptan espacios...tan sólo mayusculas y minúsculas y barra baja
                 if(!preg_match($patron, $datos['usuario']))
                 {
-                    $err['usuario'] = 'El usuario no es correcto.';
+                    $err['usuario'] = $msj['usuario_no_valido'];
                 }
             }
         }
@@ -44,14 +47,14 @@ class ControladorUsuarios
         {
             if(empty($datos['password']))
             {
-                $err['password'] = 'Debe especificar el password.';
+                $err['password'] = $msj['password_no_especificado'];
             }
             else
             {
                 $patron = "/^[A-Z0-9,.-_]{1,25}$/i";
                 if(!preg_match($patron, $datos['password']))
                 {
-                    $err['password'] = 'El password no es correcto.';
+                    $err['password'] = $msj['password_no_valido'];
                 }
             }
         }
@@ -64,6 +67,7 @@ class ControladorUsuarios
      */
     public function Acceder()
     {
+        $msj = $GLOBALS['msjControladorUsuarios'];
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Acceder'
@@ -78,12 +82,8 @@ class ControladorUsuarios
             {
                 $_SESSION['usuario'] = $datosUsuario['usuario']; //Establecemos nombre a la sesión
                 $_SESSION['hora'] = time();
-                $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
-                    array(
-                        'mensaje' => 'Bienvenido <strong>'.$_SESSION['usuario'].'</strong>, ahora puedes acceder a
-                        las funcionalidades de la aplicación.'
-                    ));
-                return $titulo.$mensaje;
+
+                header('Location: index.php');
             }
             else
             {
@@ -93,7 +93,7 @@ class ControladorUsuarios
                     ));
                 $mensaje = CargarVista(APP_DIR . '/views/mensaje_error.php',
                     array(
-                        'mensaje' => 'Datos erróneos. Por favor, inténtelo otra vez.'
+                        'mensaje' => $msj['login_error']
                     ));
                 return $titulo.$formulario.$mensaje;
             }
@@ -126,6 +126,7 @@ class ControladorUsuarios
      */
     public function ListarUsuarios()
     {
+        $msj = $GLOBALS['msjControladorUsuarios'];
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Usuarios registrados'
@@ -146,7 +147,7 @@ class ControladorUsuarios
         {
             $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                 array(
-                   'mensaje' => 'No hay usuarios registrados.'
+                   'mensaje' => $msj['listar_no_usuarios']
                 ));
             return $titulo.$mensaje;
         }
@@ -158,6 +159,7 @@ class ControladorUsuarios
      */
     public function CrearUsuario()
     {
+        $msj = $GLOBALS['msjControladorUsuarios'];
         $titulo = CargarVista(APP_DIR.'/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear usuario'
@@ -201,7 +203,7 @@ class ControladorUsuarios
             $consulta = $this->modeloUsuarios->CrearUsuario($_POST);
             $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                 array(
-                    'mensaje' => 'Usuario creado correctamente'
+                    'mensaje' => $msj['crear_usuario_ok']
                 ));
             return $titulo.$mensaje;
         }
@@ -212,6 +214,7 @@ class ControladorUsuarios
      */
     public function EditarUsuario()
     {
+        $msj = $GLOBALS['msjControladorUsuarios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar usuario'
@@ -226,10 +229,18 @@ class ControladorUsuarios
 
                 if($errores)
                 {
+                    $claseCampoForm = [];
+
+                    foreach($errores as $campo => $error)
+                    {
+                        $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                    }
+
                     $formulario = CargarVista(APP_DIR . '/views/formulario_sel_usuario.php',
                         array(
                             'accion' => '?opcion=editar_usuario',
-                            'errores' => $errores
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
                         ));
                     return $titulo . $formulario;
                 }
@@ -247,7 +258,7 @@ class ControladorUsuarios
                     {
                         $mensaje = CargarVista(APP_DIR.'/views/mensaje.php',
                             array(
-                               'mensaje' => 'El usuario especificado no está registrado.'
+                               'mensaje' => $msj['usuario_no_encontrado']
                             ));
                         return $titulo.$mensaje;
                     }
@@ -258,10 +269,18 @@ class ControladorUsuarios
             {
                 if($errores)
                 {
+                    $claseCampoForm = [];
+
+                    foreach($errores as $campo => $error)
+                    {
+                        $claseCampoForm[$campo] = ($error === '')? '':'has-error';
+                    }
+
                     $formulario = CargarVista(APP_DIR . '/views/formulario_edita_usuario.php',
                         array(
                             'accion' => '?opcion=editar_usuario',
-                            'errores' => $errores
+                            'errores' => $errores,
+                            'claseCampoForm' => $claseCampoForm
                         ));
                     return $titulo.$formulario;
                 }
@@ -275,7 +294,7 @@ class ControladorUsuarios
 
                     $mensaje = CargarVista(APP_DIR.'/views/mensaje_exito.php',
                         array(
-                           'mensaje' => 'Password actualizado con éxito.'
+                           'mensaje' => $msj['editar_usuario_ok']
                         ));
                     unset($_SESSION['editar_usuario']); //Eliminamos el usuario editado
 
@@ -301,6 +320,7 @@ class ControladorUsuarios
      */
     function EliminarUsuario()
     {
+        $msj = $GLOBALS['msjControladorUsuarios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
@@ -339,14 +359,14 @@ class ControladorUsuarios
                             $this->modeloUsuarios->EliminarUsuario($_POST['usuario']);
                             $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                                 array(
-                                    'mensaje' => 'Usuario eliminado correctamente.'
+                                    'mensaje' => $msj['eliminar_usuario_ok']
                                 ));
                         }
                         else
                         {
                             $mensaje = CargarVista(APP_DIR . '/views/mensaje_error.php',
                                 array(
-                                    'mensaje' => 'No se puede eliminar el usuario que está en la sesión.'
+                                    'mensaje' => $msj['eliminar_usuario_error']
                                 ));
                         }
                     }
@@ -354,7 +374,7 @@ class ControladorUsuarios
                     {
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
-                                'mensaje' => 'El usuario especificado no se encuentra en la base de datos.'
+                                'mensaje' => $msj['usuario_no_encontrado']
                             ));
                     }
                     return $titulo . $mensaje;
@@ -371,7 +391,4 @@ class ControladorUsuarios
             return $titulo.$formulario;
         }
     }
-
-
-
 }

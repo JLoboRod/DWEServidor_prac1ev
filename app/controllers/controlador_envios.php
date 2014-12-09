@@ -10,6 +10,7 @@ class ControladorEnvios{
 
     private $modeloEnvios;
     private $modeloProvincias;
+    private $msjEnvios;
 
     function __construct(){
         $this->modeloEnvios = new ModeloEnvios();
@@ -24,20 +25,21 @@ class ControladorEnvios{
      */
     private function Filtro($datos=array())
     {
+        $msj = $GLOBALS['msjFiltroEnvios'];
         $err = array();
 
         if(isset($datos['cod_envio']))
         {
             if($datos['cod_envio']==='')
             {
-                $err['cod_envio'] = 'Debe introducir un código de envío';
+                $err['cod_envio'] = $msj['cod_envio_no_especificado'];
             }
             else
             {
                 if(!filter_var($datos['cod_envio'], FILTER_VALIDATE_INT,
                     array( 'options' => array('min_range' => 1, 'max_range' => 99999999999))))
                 {
-                    $err['cod_envio'] = 'El código de envío no es correcto.';
+                    $err['cod_envio'] = $msj['cod_envio_no_valido'];
                 }
             }
         }
@@ -45,14 +47,14 @@ class ControladorEnvios{
         {
             if(empty($datos['destinatario']))
             {
-                $err['destinatario'] = 'Debe especificar un destinatario.';
+                $err['destinatario'] = $msj['destinatario_no_especificado'];
             }
             else
             {
                 $patron = "/^[a-zA-ZaáéíóúäëïöüÁÉÍÓÚÄËÏÖÜñÑ ]+/";
                 if(!preg_match($patron, $datos['destinatario']))
                 {
-                    $err['destinatario'] = 'El destinatario no puede contener números o signos de puntuación.';
+                    $err['destinatario'] = $msj['destinatario_no_valido'];
                 }
             }
         }
@@ -60,7 +62,7 @@ class ControladorEnvios{
         {
             if($datos['telefono']==='')
             {
-                $err['telefono'] = 'Debe especificar un teléfono de contacto.';
+                $err['telefono'] = $msj['telefono_no_especificado'];
             }
             else
             {
@@ -70,7 +72,7 @@ class ControladorEnvios{
 
                 if(!preg_match($patron, $datos['telefono']))
                 {
-                    $err['telefono'] = 'El teléfono no es válido.';
+                    $err['telefono'] = $msj['telefono_no_valido'];
                 }
             }
         }
@@ -79,7 +81,7 @@ class ControladorEnvios{
 
             if (!$datos['direccion']==='') {
                 if (!preg_match($patron, $datos['direccion'])) {
-                    $err['direccion'] = 'La dirección no es válida.';
+                    $err['direccion'] = $msj['direccion_no_valida'];
                 }
             }
         }
@@ -89,7 +91,7 @@ class ControladorEnvios{
             {
                 if(!preg_match("/^[a-zA-Z ]{1,25}$/", $datos['poblacion']))
                 {
-                    $err['poblacion'] = 'La población no es válida.';
+                    $err['poblacion'] = $msj['poblacion_no_valida'];
                 }
             }
         }
@@ -100,7 +102,7 @@ class ControladorEnvios{
                 $patron = "/^0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}$/";
                 if(!preg_match($patron, $datos['cod_postal']))
                 {
-                    $err['cod_postal'] = 'El código postal no es válido.';
+                    $err['cod_postal'] = $msj['cod_postal_no_valido'];
                 }
             }
         }
@@ -108,14 +110,14 @@ class ControladorEnvios{
         {
             if($datos['provincia']==='00')
             {
-                $err['provincia'] = 'Debe elegir una provincia.';
+                $err['provincia'] = $msj['provincia_no_especificada'];
             }
             else
             {
                 $patron = "/^0[1-9]|[1-4][0-9]|5[0-2]$/";
                 if(!preg_match($patron, $datos['provincia']))
                 {
-                    $err['provincia'] = 'La provincia no es correcta.';
+                    $err['provincia'] = $msj['provincia_no_valida'];
                 }
             }
         }
@@ -123,13 +125,13 @@ class ControladorEnvios{
         {
             if($datos['email']==='')
             {
-                $err['email'] = 'Debe especificar una dirección de correo electrónico.';
+                $err['email'] = $msj['email_no_especificado'];
             }
             else
             {
                 if(!filter_var($datos['email'], FILTER_VALIDATE_EMAIL))
                 {
-                    $err['email'] = 'El email no es válido.';
+                    $err['email'] = $msj['email_no_valido'];
                 }
             }
         }
@@ -156,6 +158,7 @@ class ControladorEnvios{
      */
     public function ListarEnvios()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
                 array(
                     'tituloPagina' => 'Listar envíos'
@@ -245,7 +248,7 @@ class ControladorEnvios{
         {
             $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                 array(
-                    'mensaje' => 'No hay envíos registrados.'
+                    'mensaje' => $msj['listar_no_envios']
                     ));
 
             return $titulo.$mensaje;
@@ -259,6 +262,7 @@ class ControladorEnvios{
      */
     public function CrearEnvio()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Crear nuevo envío'
@@ -307,7 +311,7 @@ class ControladorEnvios{
             $consulta = $this->modeloEnvios->CrearEnvio($_POST);
             $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                 array(
-                    'mensaje' => 'Envío creado correctamente'
+                    'mensaje' => $msj['crear_envio_ok']
                 ));
             return $titulo.$mensaje;
         }
@@ -319,6 +323,7 @@ class ControladorEnvios{
      */
     public function EditarEnvio()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Editar envío'
@@ -370,7 +375,7 @@ class ControladorEnvios{
                     {
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
-                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                                'mensaje' => $msj['envio_no_encontrado']
                             ));
 
                         return $titulo . $mensaje;
@@ -402,7 +407,7 @@ class ControladorEnvios{
                     $this->modeloEnvios->EditarEnvio($_POST['cod_envio'], $_POST);
                     $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                         array(
-                            'mensaje' => 'Envío modificado correctamente.'
+                            'mensaje' => $msj['editar_envio_ok']
                         ));
 
                     return $titulo . $mensaje;
@@ -429,6 +434,7 @@ class ControladorEnvios{
      */
     public function EliminarEnvio()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
@@ -464,12 +470,12 @@ class ControladorEnvios{
                         $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                             array(
-                                'mensaje' => 'Envío eliminado correctamente.'
+                                'mensaje' => $msj['eliminar_envio_ok']
                             ));
                     } else {
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
-                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                                'mensaje' => $msj['envio_no_encontrado']
                             ));
                     }
                     return $titulo . $mensaje;
@@ -493,6 +499,7 @@ class ControladorEnvios{
      */
     public function AnotarRecepcion()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Eliminar envío'
@@ -530,12 +537,12 @@ class ControladorEnvios{
 
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
                             array(
-                                'mensaje' => 'Recepción anotada correctamente.'
+                                'mensaje' => $msj['anotar_recepcion_ok']
                             ));
                     } else {
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
-                                'mensaje' => 'El envío especificado no se encuentra en la base de datos.'
+                                'mensaje' => $msj['envio_no_encontrado']
                             ));
                     }
                 }
@@ -558,6 +565,7 @@ class ControladorEnvios{
      */
     public function BuscarEnvios()
     {
+        $msj = $GLOBALS['msjControladorEnvios'];
         $titulo = CargarVista(APP_DIR . '/views/titulo.php',
             array(
                 'tituloPagina' => 'Buscar envíos'
@@ -627,7 +635,7 @@ class ControladorEnvios{
             {
                 $mensaje = CargarVista(APP_DIR.'/views/mensaje.php',
                     array(
-                        'mensaje' => 'No hay envíos que cumplan esas condiciones.'
+                        'mensaje' => $msj['buscar_no_envios']
                     ));
                 return $titulo.$mensaje;
             }
