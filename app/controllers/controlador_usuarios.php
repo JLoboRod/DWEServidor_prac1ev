@@ -197,14 +197,26 @@ class ControladorUsuarios
         }
         else
         {
-            //Encriptamos la contraseña del usuario
-            $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $consulta = $this->modeloUsuarios->CrearUsuario($_POST);
-            $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
-                array(
-                    'mensaje' => $msj['crear_usuario_ok']
-                ));
-            return $titulo.$mensaje;
+            if($this->modeloUsuarios->BuscarUsuario($_POST['usuario']))
+            {
+                $mensaje = CargarVista(APP_DIR . '/views/mensaje_error.php',
+                    array(
+                        'mensaje' => $msj['crear_usuario_repetido']
+                    ));
+                return $titulo . $mensaje;
+            }
+            else {
+
+
+                //Encriptamos la contraseña del usuario
+                $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $consulta = $this->modeloUsuarios->CrearUsuario($_POST);
+                $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
+                    array(
+                        'mensaje' => $msj['crear_usuario_ok']
+                    ));
+                return $titulo . $mensaje;
+            }
         }
     }
 

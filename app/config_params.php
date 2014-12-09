@@ -53,6 +53,7 @@ $msjControladorUsuarios = array(
     'login_error' => 'Datos erróneos. Por favor, inténtelo otra vez.',
     'listar_no_usuarios' => 'No hay usuarios registrados.',
     'crear_usuario_ok' => 'Usuario creado correctamente.',
+    'crear_usuario_repetido' => 'El usuario ya se encuentra registrado',
     'usuario_no_encontrado' => 'El usuario especificado no está registrado.',
     'editar_usuario_ok' => 'Password actualizado con éxito.',
     'eliminar_usuario_ok' => 'Usuario eliminado correctamente',
