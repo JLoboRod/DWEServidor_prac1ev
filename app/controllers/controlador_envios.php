@@ -148,8 +148,9 @@ class ControladorEnvios{
             array(
                 'tituloPagina' => 'Inicio'
             ));
+        $portada = CargarVista(APP_DIR .'/views/portada.php');
 
-        return $titulo;
+        return $titulo.$portada;
     }
 
     /**

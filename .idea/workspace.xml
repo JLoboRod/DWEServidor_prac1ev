@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7dba699-a782-489a-91cd-586a095d758a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/confirmar_eliminar.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/portada.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_envios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" afterPath="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/estilos.css" afterPath="$PROJECT_DIR$/assets/css/estilos.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DWEServidor_prac1ev.iws" />
@@ -42,19 +42,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plantilla.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/plantilla.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="555">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-              <folding>
-                <marker date="1418072370000" expanded="true" signature="496:521" placeholder="..." />
-                <marker date="1418072370000" expanded="true" signature="604:632" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="config_db.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config_db.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -65,23 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/db.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2055">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1417881477000" expanded="true" signature="3087:3138" placeholder="select :_cam..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="controlador_envios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.541667" vertical-offset="6863" max-vertical-offset="10185">
-              <caret line="476" column="0" selection-start-line="476" selection-start-column="0" selection-end-line="476" selection-end-column="0" />
+            <state vertical-scroll-proportion="-14.041667" vertical-offset="1913" max-vertical-offset="10200">
+              <caret line="150" column="41" selection-start-line="150" selection-start-column="41" selection-end-line="150" selection-end-column="41" />
               <folding>
                 <element signature="e#6#38#0#PHP" expanded="true" />
               </folding>
@@ -89,14 +64,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controlador_usuarios.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controlador_usuarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40992168" vertical-offset="5468" max-vertical-offset="6240">
+            <state vertical-scroll-proportion="-6.5416665" vertical-offset="5468" max-vertical-offset="6240">
               <caret line="375" column="78" selection-start-line="375" selection-start-column="78" selection-end-line="375" selection-end-column="78" />
               <folding>
                 <element signature="e#6#40#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="portada.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/portada.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.31331593" vertical-offset="0" max-vertical-offset="383">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="estilos.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="2520">
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -178,7 +173,6 @@
         <option value="$PROJECT_DIR$/app/views/listar_usuarios.php" />
         <option value="$PROJECT_DIR$/app/views/encabezado.php" />
         <option value="$PROJECT_DIR$/app/models/modelo_usuarios.php" />
-        <option value="$PROJECT_DIR$/assets/css/estilos.css" />
         <option value="$PROJECT_DIR$/app/helpers/crea_form_helper.php" />
         <option value="$PROJECT_DIR$/app/views/menu_navegacion.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -188,8 +182,10 @@
         <option value="$PROJECT_DIR$/app/config_params.php" />
         <option value="$PROJECT_DIR$/app/views/formulario_edita_usuario.php" />
         <option value="$PROJECT_DIR$/app/views/confirmar_eliminar.php" />
-        <option value="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
         <option value="$PROJECT_DIR$/app/controllers/controlador_usuarios.php" />
+        <option value="$PROJECT_DIR$/app/controllers/controlador_envios.php" />
+        <option value="$PROJECT_DIR$/assets/css/estilos.css" />
+        <option value="$PROJECT_DIR$/app/views/portada.php" />
       </list>
     </option>
   </component>
@@ -253,7 +249,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DWEServidor_prac1ev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -268,10 +282,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -412,7 +422,13 @@
       <option name="project" value="LOCAL" />
       <updated>1418090053865</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Añadida confirmación de eliminación en el servidor, tanto de envíos como de usuarios.">
+      <created>1418160684764</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1418160684764</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -423,6 +439,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991204" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32844576" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991204" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -433,7 +450,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991204" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -467,7 +483,8 @@
     <MESSAGE value="Añadidas variables $tiempoSesion y $paginacion al archivo de configuración.&#10;Se ha incluido en archivo bd.sql con el código de la base de datos utilizada.&#10;Solucionado el error porque el que no se cerraba la sesión cuando el tiempo de sesión expiraba." />
     <MESSAGE value="Solucionado problema de rutas en la plantilla.&#10;Ahora la ruta de la aplicación es APP_DIR." />
     <MESSAGE value="Añadida parametrización de mensajes de la aplicación.&#10;Se ha renombrado config.php a config_db.php y sólo contiene los datos de configuración relativos a la base de datos.&#10;Se ha creado config_params.php con parámetros configurables como la paginación y el tiempo de sesión, además de los mensajes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadida parametrización de mensajes de la aplicación.&#10;Se ha renombrado config.php a config_db.php y sólo contiene los datos de configuración relativos a la base de datos.&#10;Se ha creado config_params.php con parámetros configurables como la paginación y el tiempo de sesión, además de los mensajes." />
+    <MESSAGE value="Añadida confirmación de eliminación en el servidor, tanto de envíos como de usuarios." />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadida confirmación de eliminación en el servidor, tanto de envíos como de usuarios." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -491,8 +508,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="555">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
-            <marker date="1418072370000" expanded="true" signature="496:521" placeholder="..." />
-            <marker date="1418072370000" expanded="true" signature="604:632" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -510,7 +527,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2055">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417881477000" expanded="true" signature="3087:3138" placeholder="select :_cam..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select :_cam..." />
           </folding>
         </state>
       </provider>
@@ -698,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2713816" vertical-offset="0" max-vertical-offset="2460">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/carga_vista_helper.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="654">
@@ -751,7 +761,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2055">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417881477000" expanded="true" signature="3087:3138" placeholder="select :_cam..." />
+            <marker date="1417881477000" expanded="true" signature="-1:-1" placeholder="select :_cam..." />
           </folding>
         </state>
       </provider>
@@ -761,8 +771,8 @@
         <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="555">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
-            <marker date="1418072370000" expanded="true" signature="496:521" placeholder="..." />
-            <marker date="1418072370000" expanded="true" signature="604:632" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1418072370000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -819,23 +829,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5416665" vertical-offset="5468" max-vertical-offset="6240">
+          <caret line="375" column="78" selection-start-line="375" selection-start-column="78" selection-end-line="375" selection-end-column="78" />
+          <folding>
+            <element signature="e#6#40#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/controlador_envios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.541667" vertical-offset="6863" max-vertical-offset="10185">
-          <caret line="476" column="0" selection-start-line="476" selection-start-column="0" selection-end-line="476" selection-end-column="0" />
+        <state vertical-scroll-proportion="-14.041667" vertical-offset="1913" max-vertical-offset="10200">
+          <caret line="150" column="41" selection-start-line="150" selection-start-column="41" selection-end-line="150" selection-end-column="41" />
           <folding>
             <element signature="e#6#38#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/controlador_usuarios.php">
+    <entry file="file://$PROJECT_DIR$/assets/css/estilos.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40992168" vertical-offset="5468" max-vertical-offset="6240">
-          <caret line="375" column="78" selection-start-line="375" selection-start-column="78" selection-end-line="375" selection-end-column="78" />
-          <folding>
-            <element signature="e#6#40#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="2520">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/portada.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31331593" vertical-offset="0" max-vertical-offset="383">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

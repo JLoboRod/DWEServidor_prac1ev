@@ -5,6 +5,10 @@
     white-space: nowrap;
 }
 
+.portada{
+    text-align: center;
+}
+
 .paginador{
     margin:0 auto;
     margin-bottom: 1em;
