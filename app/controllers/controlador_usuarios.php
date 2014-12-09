@@ -16,7 +16,6 @@ class ControladorUsuarios
         $this->modeloUsuarios = new ModeloUsuarios();
     }
 
-
     /**
      * Filtra los datos $datos y devuelve un array con los
      * mensajes de error para cada campo
@@ -330,7 +329,7 @@ class ControladorUsuarios
         {
             $errores = $this->Filtro($_POST);
 
-            if(count($_POST)===1 && isset($_POST['usuario']))
+            if(isset($_POST['usuario']))
             {
                 if($errores)
                 {
@@ -356,11 +355,13 @@ class ControladorUsuarios
                     {
                         if($usuario['usuario']!==$_SESSION['usuario'])
                         {
-                            $this->modeloUsuarios->EliminarUsuario($_POST['usuario']);
-                            $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
+                            //Confirmación de eliminación
+                            $formulario = CargarVista(APP_DIR .'/views/confirmar_eliminar.php',
                                 array(
-                                    'mensaje' => $msj['eliminar_usuario_ok']
+                                    'accion' => '?opcion=eliminar_usuario',
+                                    'dato' => $_POST['usuario']
                                 ));
+                            return $titulo.$formulario;
                         }
                         else
                         {
@@ -378,6 +379,22 @@ class ControladorUsuarios
                             ));
                     }
                     return $titulo . $mensaje;
+                }
+            }
+            else if(isset($_POST['oculto'])) //Venimos de la confirmación de eliminación
+            {
+                if(isset($_POST['si']))
+                {
+                    $this->modeloUsuarios->EliminarUsuario($_POST['oculto']);
+                    $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
+                        array(
+                            'mensaje' => $msj['eliminar_usuario_ok']
+                        ));
+                    return $titulo.$mensaje;
+                }
+                else if(isset($_POST['no']))
+                {
+                    header('Location: index.php');
                 }
             }
         }

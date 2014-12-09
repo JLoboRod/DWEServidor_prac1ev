@@ -444,7 +444,7 @@ class ControladorEnvios{
         {
             $errores = $this->Filtro($_POST);
 
-            if(count($_POST)===1 && isset($_POST['cod_envio']))
+            if(isset($_POST['cod_envio']))
             {
                 if($errores)
                 {
@@ -467,11 +467,14 @@ class ControladorEnvios{
                 else {
                     if ($this->modeloEnvios->BuscarEnvios(array('cod_envio' => $_POST['cod_envio']))) {
 
-                        $this->modeloEnvios->EliminarEnvio($_POST['cod_envio']);
-                        $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
+                        //Confirmación de eliminación
+                        $formulario = CargarVista(APP_DIR .'/views/confirmar_eliminar.php',
                             array(
-                                'mensaje' => $msj['eliminar_envio_ok']
+                                'accion' => '?opcion=eliminar',
+                                'dato' => $_POST['cod_envio']
                             ));
+                        return $titulo.$formulario;
+
                     } else {
                         $mensaje = CargarVista(APP_DIR . '/views/mensaje.php',
                             array(
@@ -479,6 +482,22 @@ class ControladorEnvios{
                             ));
                     }
                     return $titulo . $mensaje;
+                }
+            }
+            else if(isset($_POST['oculto'])) //Venimos de la confirmación de eliminación
+            {
+                if(isset($_POST['si']))
+                {
+                    $this->modeloEnvios->EliminarEnvio($_POST['oculto']);
+                    $mensaje = CargarVista(APP_DIR . '/views/mensaje_exito.php',
+                        array(
+                            'mensaje' => $msj['eliminar_envio_ok']
+                        ));
+                    return $titulo.$mensaje;
+                }
+                else if(isset($_POST['no']))
+                {
+                    header('Location: index.php');
                 }
             }
         }
